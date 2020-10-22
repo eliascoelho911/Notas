@@ -11,6 +11,15 @@
         <item name="fontFamily">@font/poppins_medium</item>
     </style>
 
+    <style name="AppTheme.ItemDrawer">
+        <item name="itemTextAppearance">@style/AppTheme.TextAppearance.Body2</item>
+        <item name="itemTextColor">@color/text_drawer</item>
+        <item name="itemIconTint">@color/icon_drawer</item>
+        <item name="itemShapeFillColor">@color/colorPrimaryDark</item>
+        <item name="itemShapeAppearance">@style/AppTheme.ItemDrawerShapeAppearance</item>
+        <item name="itemIconPadding">16dp</item>
+    </style>
+
     <style name="AppTheme.ItemDrawerShapeAppearance">
         <item name="cornerSizeTopRight">20dp</item>
         <item name="cornerSizeBottomRight">20dp</item>
