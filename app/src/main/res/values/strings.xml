@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Notas</string>
+    <string name="nav_header_title">@string/app_name</string>
+    <string name="menu_notas">Todas notas</string>
+</resources>
