@@ -17,8 +17,15 @@
         android:id="@+id/activity_main_nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:paddingEnd="16dp"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/activity_main_drawer" />
+        android:background="@color/colorPrimary"
+        app:itemTextAppearance="@style/AppTheme.TextAppearance.Body2"
+        app:itemTextColor="@android:color/white"
+        app:itemIconTint="@android:color/white"
+        app:itemShapeFillColor="@color/colorPrimaryDark"
+        app:itemShapeAppearance="@style/AppTheme.ItemDrawerShapeAppearance"
+        app:menu="@menu/activity_main_drawer"
+        tools:ignore="RtlSymmetry" />
 </androidx.drawerlayout.widget.DrawerLayout>
