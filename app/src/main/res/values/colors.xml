@@ -6,4 +6,5 @@
     <color name="primary_text_color">#ffffff</color>
     <color name="icon_drawer">#ffffff</color>
     <color name="text_drawer">#ffffff</color>
+    <color name="background_tela">@color/colorPrimaryDark</color>
 </resources>
