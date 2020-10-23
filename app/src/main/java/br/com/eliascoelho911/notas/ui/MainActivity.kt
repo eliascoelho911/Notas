@@ -1,4 +1,4 @@
-package br.com.eliascoelho911.notas.ui.activity
+package br.com.eliascoelho911.notas.ui
 
 import android.os.Bundle
 import com.google.android.material.navigation.NavigationView

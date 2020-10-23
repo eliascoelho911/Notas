@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_tela"
-    tools:context=".ui.activity.MainActivity">
+    tools:context=".ui.MainActivity">
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/content_main_bottom_app_bar"
