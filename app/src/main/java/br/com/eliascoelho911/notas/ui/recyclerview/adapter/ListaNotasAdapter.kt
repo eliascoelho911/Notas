@@ -10,7 +10,7 @@ import br.com.eliascoelho911.notas.model.Nota
 import br.com.eliascoelho911.notas.ui.recyclerview.adapter.ListaNotasAdapter.NotaViewHolder
 import org.koin.java.KoinJavaComponent.inject
 
-class ListaNotasAdapter(private val notas: List<Nota>) :
+class ListaNotasAdapter(private var notas: List<Nota> = listOf()) :
     ListAdapter<Nota, NotaViewHolder>(DiffUtil) {
 
     private val context: Context by inject(Context::class.java)
@@ -23,6 +23,11 @@ class ListaNotasAdapter(private val notas: List<Nota>) :
 
     override fun onBindViewHolder(holder: NotaViewHolder, position: Int) {
         holder.vincula(notas[position])
+    }
+
+    fun atualiza(notas: List<Nota>) {
+        this.notas = notas
+        notifyDataSetChanged()
     }
 
     override fun getItemCount() = notas.size
