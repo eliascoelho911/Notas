@@ -3,6 +3,7 @@ package br.com.eliascoelho911.notas.ui.recyclerview.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import br.com.eliascoelho911.notas.databinding.ItemNotaBinding
@@ -38,7 +39,7 @@ class ListaNotasAdapter(private var notas: List<Nota> = listOf()) :
         }
     }
 
-    private object DiffUtil : androidx.recyclerview.widget.DiffUtil.ItemCallback<Nota>() {
+    private object DiffUtil : ItemCallback<Nota>() {
         override fun areItemsTheSame(oldItem: Nota, newItem: Nota) = oldItem == newItem
         override fun areContentsTheSame(oldItem: Nota, newItem: Nota) = oldItem == newItem
     }

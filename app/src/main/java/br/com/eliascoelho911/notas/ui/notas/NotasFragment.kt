@@ -6,8 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import br.com.eliascoelho911.notas.R
+import br.com.eliascoelho911.notas.ui.recyclerview.adapter.ListaNotasAdapter
 import kotlinx.android.synthetic.main.fragment_notas.*
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.java.KoinJavaComponent.inject
 
 class NotasFragment : Fragment() {
 
@@ -15,7 +18,7 @@ class NotasFragment : Fragment() {
         fragment_notas_lista_de_notas
     }
     private val viewModel: NotasViewModel by viewModel()
-    private val manipuladorDeListaDeNotas = ManipuladorDeListaDeNotas()
+    private val manipuladorDeListaDeNotas: ManipuladorDeListaDeNotas by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater,

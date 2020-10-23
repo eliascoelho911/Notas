@@ -11,7 +11,7 @@ open class ManipuladorDeListaDeNotas {
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = ListaNotasAdapter()
     }
-
+    
     fun atualizaLista(recyclerView: RecyclerView, notas: List<Nota>) {
         val adapter: ListaNotasAdapter = recyclerView.adapter as ListaNotasAdapter
         adapter.atualiza(notas)

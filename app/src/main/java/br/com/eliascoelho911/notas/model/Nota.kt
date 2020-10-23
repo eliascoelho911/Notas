@@ -7,6 +7,6 @@ import androidx.room.PrimaryKey
 data class Nota(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
-    val titulo: String,
-    val descricao: String
+    val titulo: String = "Titulo",
+    val descricao: String = "Descrição"
 )
