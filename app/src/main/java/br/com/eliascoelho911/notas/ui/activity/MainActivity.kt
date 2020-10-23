@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(setOf(R.id.nav_notas), drawer_layout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         activity_main_nav_view.setupWithNavController(navController)
+        content_main_bottom_app_bar.setupWithNavController(navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/fragment_notas_adicionar_notas_toolbar_checklist"
+        android:icon="@drawable/ic_check_box"
+        android:title="@string/checklist"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/fragment_notas_adicionar_notas_toolbar_imagem"
+        android:icon="@drawable/ic_image"
+        android:title="@string/imagem"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/fragment_notas_adicionar_notas_toolbar_label"
+        android:icon="@drawable/ic_label"
+        android:title="@string/label"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/fragment_notas_adicionar_notas_toolbar_audio"
+        android:icon="@drawable/ic_mic"
+        android:title="@string/audio"
+        app:showAsAction="always" />
+</menu>

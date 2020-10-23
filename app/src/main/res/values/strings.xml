@@ -3,4 +3,8 @@
     <string name="nav_header_title">@string/app_name</string>
     <string name="menu_notas">Todas notas</string>
     <string name="suas_notas">Suas notas</string>
+    <string name="checklist">Checklist</string>
+    <string name="imagem">Imagem</string>
+    <string name="label">Label</string>
+    <string name="audio">Audio</string>
 </resources>
