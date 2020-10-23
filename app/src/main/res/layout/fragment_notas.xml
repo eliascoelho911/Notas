@@ -8,9 +8,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/background_tela"
-        android:paddingStart="@dimen/margin_toolbar"
-        android:paddingEnd="@dimen/margin_toolbar">
+        android:background="@color/background_tela">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/fragment_notas_lista_de_notas"
@@ -18,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             tools:itemCount="2"
-            app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+            android:layout_marginEnd="@dimen/margin_toolbar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
