@@ -11,6 +11,11 @@
         <item name="fontFamily">@font/poppins_medium</item>
     </style>
 
+    <style name="AppTheme.TextAppearance.Title">
+        <item name="fontFamily">@font/poppins_semibold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
     <style name="AppTheme.ItemDrawer">
         <item name="itemTextAppearance">@style/AppTheme.TextAppearance.Body2</item>
         <item name="itemTextColor">@color/text_drawer</item>
