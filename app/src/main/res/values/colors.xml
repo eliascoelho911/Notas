@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#171c23</color>
     <color name="colorAccent">#3369ff</color>
     <color name="primary_text_color">#ffffff</color>
+    <color name="primary_text_color_hint">#80FFFFFF</color>
     <color name="icon_drawer">#ffffff</color>
     <color name="text_drawer">#ffffff</color>
     <color name="background_tela">@color/colorPrimaryDark</color>

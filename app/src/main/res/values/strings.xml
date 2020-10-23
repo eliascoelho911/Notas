@@ -7,4 +7,6 @@
     <string name="imagem">Imagem</string>
     <string name="label">Label</string>
     <string name="audio">Audio</string>
+    <string name="titulo">Título</string>
+    <string name="nota">Nota</string>
 </resources>
