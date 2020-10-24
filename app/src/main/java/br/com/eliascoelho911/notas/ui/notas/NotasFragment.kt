@@ -5,14 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.ui.setupWithNavController
 import br.com.eliascoelho911.notas.R
 import br.com.eliascoelho911.notas.ui.main.MainViewModel
-import br.com.eliascoelho911.notas.ui.recyclerview.adapter.ListaNotasAdapter
 import kotlinx.android.synthetic.main.fragment_notas.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.koin.java.KoinJavaComponent.inject
 
 class NotasFragment : Fragment() {
 
@@ -22,12 +21,6 @@ class NotasFragment : Fragment() {
     private val viewModel: NotasViewModel by viewModel()
     private val mainViewModel: MainViewModel by sharedViewModel()
     private val manipuladorDeListaDeNotas: ManipuladorDeListaDeNotas by inject()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        mainViewModel.bottomAppBar(R.layout.bottom_app_bar_fragment_notas)
-        mainViewModel.fab(R.layout.fab_fragment_notas, true)
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,6 +32,7 @@ class NotasFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        fragment_notas_nova_nota_bar.setupWithNavController(mainViewModel.navController)
         criaListaDeNotas()
         buscaNotas()
     }

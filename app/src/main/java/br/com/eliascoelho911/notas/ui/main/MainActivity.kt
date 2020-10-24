@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import br.com.eliascoelho911.notas.R
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.bottom_app_bar_fragment_notas.*
 import kotlinx.android.synthetic.main.content_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

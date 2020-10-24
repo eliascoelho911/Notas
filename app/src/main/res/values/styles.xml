@@ -22,6 +22,13 @@
         <item name="android:textSize">18sp</item>
     </style>
 
+    <style name="AppTheme.BottomAppBar">
+        <item name="android:backgroundTint">@color/colorPrimary</item>
+        <item name="fabAlignmentMode">end</item>
+        <item name="fabCradleMargin">8dp</item>
+        <item name="fabCradleRoundedCornerRadius">24dp</item>
+    </style>
+
     <style name="AppTheme.ItemDrawer">
         <item name="itemTextAppearance">@style/AppTheme.TextAppearance.Body2</item>
         <item name="itemTextColor">@color/text_drawer</item>
