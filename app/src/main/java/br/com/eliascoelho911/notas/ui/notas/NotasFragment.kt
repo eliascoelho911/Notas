@@ -25,6 +25,7 @@ class NotasFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         mainViewModel.bottomAppBar(R.layout.bottom_app_bar_fragment_notas)
+        mainViewModel.fab(R.layout.fab_fragment_notas, true)
         super.onCreate(savedInstanceState)
     }
 
