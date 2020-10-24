@@ -4,6 +4,7 @@ import androidx.room.Room
 import br.com.eliascoelho911.notas.database.AppDataBase
 import br.com.eliascoelho911.notas.database.dao.NotaDao
 import br.com.eliascoelho911.notas.database.repository.NotaRepository
+import br.com.eliascoelho911.notas.ui.main.CriadorDeBottomAppBar
 import br.com.eliascoelho911.notas.ui.main.MainViewModel
 import br.com.eliascoelho911.notas.ui.notas.ManipuladorDeListaDeNotas
 import br.com.eliascoelho911.notas.ui.notas.NotasViewModel
@@ -12,6 +13,7 @@ import org.koin.dsl.module
 
 val othersModules = module {
     single { ManipuladorDeListaDeNotas() }
+    single { CriadorDeBottomAppBar() }
 }
 
 val dbModule = module {

@@ -6,10 +6,10 @@ import androidx.annotation.LayoutRes
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
-import androidx.navigation.ui.NavigationUI
 import br.com.eliascoelho911.notas.exception.MainViewModelNaoConfigurado
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import org.koin.java.KoinJavaComponent.inject
 
 class MainViewModel : ViewModel() {
     private lateinit var coordinatorLayout: CoordinatorLayout
@@ -17,6 +17,7 @@ class MainViewModel : ViewModel() {
     private lateinit var navController: NavController
     private var bottomAppBar: BottomAppBar? = null
     private var fab: FloatingActionButton? = null
+    private val criadorDeBottomAppBar: CriadorDeBottomAppBar by inject(CriadorDeBottomAppBar::class.java)
 
     fun configura(
         navController: NavController,
@@ -33,11 +34,19 @@ class MainViewModel : ViewModel() {
             semBottomAppBar()
             null
         } else {
-            validaConfiguracaoDoViewModel()
-            val bottomAppBarCriado = criaEExibeBottomAppBar(layout)
-            NavigationUI.setupWithNavController(bottomAppBarCriado, navController)
-            this.bottomAppBar = bottomAppBarCriado
-            bottomAppBarCriado
+            criaBottomAppBar(layout)
+        }
+    }
+
+    private fun criaBottomAppBar(layout: Int?): BottomAppBar? {
+        bottomAppBar = criadorDeBottomAppBar.criarExibirEConfigurarNavController(layout, navController, coordinatorLayout, layoutInflater)
+        return bottomAppBar
+    }
+
+    private fun semBottomAppBar() {
+        if (bottomAppBar != null) {
+            coordinatorLayout.removeView(bottomAppBar)
+            bottomAppBar = null
         }
     }
 
@@ -75,23 +84,9 @@ class MainViewModel : ViewModel() {
         return fab
     }
 
-    private fun criaEExibeBottomAppBar(layout: Int): BottomAppBar {
-        val bottomAppBarCriado =
-            layoutInflater.inflate(layout, coordinatorLayout, false) as BottomAppBar
-        bottomAppBarCriado.id = View.generateViewId()
-        coordinatorLayout.addView(bottomAppBarCriado)
-        return bottomAppBarCriado
-    }
-
     private fun validaConfiguracaoDoViewModel() {
         if (!::coordinatorLayout.isInitialized || !::layoutInflater.isInitialized)
             throw MainViewModelNaoConfigurado()
     }
 
-    private fun semBottomAppBar() {
-        if (bottomAppBar != null) {
-            coordinatorLayout.removeView(bottomAppBar)
-            bottomAppBar = null
-        }
-    }
 }
