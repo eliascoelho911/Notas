@@ -32,9 +32,22 @@ class NotasFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        fragment_notas_nova_nota_bar.setupWithNavController(mainViewModel.navController)
+        configuraNotaBarComNavController()
+        exibeToolbar()
         criaListaDeNotas()
         buscaNotas()
+    }
+
+    private fun configuraNotaBarComNavController() {
+        fragment_notas_nova_nota_bar.setupWithNavController(mainViewModel.navControlller)
+    }
+
+    private fun exibeToolbar() {
+        mainViewModel.toolbar(
+            R.layout.toolbar_arredondada,
+            R.id.toolbar_arredondada_toolbar,
+            setOf(R.id.nav_notas)
+        )
     }
 
     private fun criaListaDeNotas() {
