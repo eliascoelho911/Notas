@@ -8,7 +8,7 @@ import androidx.navigation.NavController
 import androidx.navigation.ui.AppBarConfiguration
 import br.com.eliascoelho911.notas.ui.CriadorDeAppBarConfiguration
 import br.com.eliascoelho911.notas.ui.CriadorDeToolbar
-import br.com.eliascoelho911.notas.ui.extension.procuraFilhoPorId
+import br.com.eliascoelho911.notas.ui.CriadorDeToolbarEAppBarConfiguration
 
 class MainViewModel : ViewModel() {
     lateinit var navControlller: NavController
@@ -31,15 +31,21 @@ class MainViewModel : ViewModel() {
         this.navControlller = navController
     }
 
+    private val criadorDeToolbarEAppBarConfiguration = CriadorDeToolbarEAppBarConfiguration(
+        criadorDeToolbar,
+        criadorDeAppBarConfiguration
+    )
+
     fun toolbar(
         @LayoutRes layout: Int,
         @IdRes idToolbar: Int,
         topLevelDestinationIds: Set<Int>
     ) {
-        val appBarLayout = criadorDeToolbar.criarEExibir(layout)
-        val appBarConfiguration = criadorDeAppBarConfiguration.criar(topLevelDestinationIds)
-        val toolbar = appBarLayout.procuraFilhoPorId(idToolbar) as Toolbar?
-        toolbar?.run { aoAlterarAToolbar(this, appBarConfiguration) }
-            ?: throw IllegalArgumentException("Erro ao encontrar a Toolbar. Verifique se a Toolbar é filha do AppBarLayout e se o parâmetro idToolbar está correto")
+        val pair = criadorDeToolbarEAppBarConfiguration.criar(
+            layout,
+            idToolbar,
+            topLevelDestinationIds
+        )
+        aoAlterarAToolbar(pair.first, pair.second)
     }
 }
