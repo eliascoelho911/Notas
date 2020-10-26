@@ -36,7 +36,7 @@ class MainViewModel : ViewModel() {
         @IdRes idToolbar: Int,
         topLevelDestinationIds: Set<Int>
     ) {
-        val appBarLayout = criadorDeToolbar.criar(layout)
+        val appBarLayout = criadorDeToolbar.criarEExibir(layout)
         val appBarConfiguration = criadorDeAppBarConfiguration.criar(topLevelDestinationIds)
         val toolbar = appBarLayout.procuraFilhoPorId(idToolbar) as Toolbar?
         toolbar?.run { aoAlterarAToolbar(this, appBarConfiguration) }
