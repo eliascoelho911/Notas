@@ -11,7 +11,8 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import br.com.eliascoelho911.notas.R
 import br.com.eliascoelho911.notas.ui.CriadorDeAppBarConfiguration
-import br.com.eliascoelho911.notas.ui.CriadorDeToolbar
+import br.com.eliascoelho911.notas.ui.CriadorDeAppBarLayout
+import br.com.eliascoelho911.notas.ui.CriadorDeToolbarEAppBarConfiguration
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -27,14 +28,24 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        configuraViewModel()
+        configuraNavViewComNavController()
+    }
+
+    private fun configuraViewModel() {
+        val criadorDeAppBarLayout = CriadorDeAppBarLayout(
+            layoutInflater,
+            content_main_linear_layout
+        )
+        val criadorDeAppBarConfiguration = CriadorDeAppBarConfiguration(drawer_layout)
         viewModel.configura(
             navController = navController,
-            criadorDeToolbar = CriadorDeToolbar(layoutInflater, content_main_linear_layout),
-            criadorDeAppBarConfiguration = CriadorDeAppBarConfiguration(drawer_layout),
+            criadorDeToolbarEAppBarConfiguration = CriadorDeToolbarEAppBarConfiguration(
+                criadorDeAppBarLayout,
+                criadorDeAppBarConfiguration),
             aoAlterarAToolbar = { toolbar, appBarConfiguration ->
                 configuraAcaoAoAlterarToolbar(toolbar, appBarConfiguration)
             })
-        configuraNavViewComNavController()
     }
 
     private fun configuraAcaoAoAlterarToolbar(

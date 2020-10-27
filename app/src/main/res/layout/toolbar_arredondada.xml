@@ -14,6 +14,7 @@
         android:id="@+id/toolbar_arredondada_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        app:titleTextAppearance="@style/AppTheme.TextAppearance.Title"
         android:background="@drawable/background_rounded_toolbar"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 

@@ -11,10 +11,11 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
+        <EditText
             android:id="@+id/fragment_formulario_titulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
             android:layout_marginStart="@dimen/formulario_item_margin"
             android:layout_marginTop="@dimen/formulario_item_margin"
             android:layout_marginEnd="@dimen/formulario_item_margin"
@@ -22,12 +23,16 @@
             android:textAppearance="@style/AppTheme.TextAppearance.Title"
             android:textColor="@color/primary_text_color"
             android:textColorHint="@color/primary_text_color_hint"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:importantForAutofill="no"
+            android:inputType="none" />
 
-        <TextView
+        <EditText
             android:id="@+id/fragment_formulario_nota"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:gravity="top"
             android:layout_marginStart="@dimen/formulario_item_margin"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="@dimen/formulario_item_margin"
@@ -36,6 +41,8 @@
             android:textAppearance="@style/AppTheme.TextAppearance.Body2"
             android:textColor="@color/primary_text_color"
             android:textColorHint="@color/primary_text_color_hint"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:importantForAutofill="no"
+            android:inputType="none"/>
     </LinearLayout>
 </ScrollView>

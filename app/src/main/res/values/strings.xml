@@ -9,4 +9,5 @@
     <string name="audio">Audio</string>
     <string name="titulo">Título</string>
     <string name="nota">Nota</string>
+    <string name="inserir_nota">Inserir Nota</string>
 </resources>

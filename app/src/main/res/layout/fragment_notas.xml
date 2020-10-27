@@ -39,6 +39,7 @@
         app:menu="@menu/fragment_notas_adicionar_nota_toolbar" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fragment_notas_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorAccent"

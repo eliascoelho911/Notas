@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/nav_notas">
 
     <fragment
         android:id="@+id/nav_notas"
         android:name="br.com.eliascoelho911.notas.ui.notas.NotasFragment"
-        android:label="@string/menu_notas" />
+        android:label="@string/menu_notas"
+        tools:layout="@layout/fragment_notas">
+        <action
+            android:id="@+id/nav_notas_para_nav_formulario"
+            app:destination="@id/nav_formulario"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_formulario"
+        android:name="br.com.eliascoelho911.notas.ui.formulario.FormularioFragment"
+        android:label="@string/inserir_nota"
+        tools:layout="@layout/fragment_formulario"/>
 
 </navigation>
