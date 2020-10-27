@@ -1,6 +1,7 @@
 package br.com.eliascoelho911.notas.ui
 
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.NavGraph
 import androidx.navigation.ui.AppBarConfiguration
 
 open class CriadorDeAppBarConfiguration(

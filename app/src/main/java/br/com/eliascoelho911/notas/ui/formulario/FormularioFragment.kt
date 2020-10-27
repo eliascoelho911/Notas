@@ -22,6 +22,6 @@ class FormularioFragment : Fragment() {
     }
 
     private fun exibeToolbar() {
-        mainViewModel.toolbar(R.layout.toolbar, null)
+        mainViewModel.toolbar(R.layout.toolbar)
     }
 }

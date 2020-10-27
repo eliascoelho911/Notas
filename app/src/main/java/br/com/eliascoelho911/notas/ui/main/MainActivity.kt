@@ -12,7 +12,7 @@ import androidx.navigation.ui.setupWithNavController
 import br.com.eliascoelho911.notas.R
 import br.com.eliascoelho911.notas.ui.CriadorDeAppBarConfiguration
 import br.com.eliascoelho911.notas.ui.CriadorDeAppBarLayout
-import br.com.eliascoelho911.notas.ui.CriadorDeToolbarEAppBarConfiguration
+import br.com.eliascoelho911.notas.ui.CriadorDeToolbar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -37,12 +37,10 @@ class MainActivity : AppCompatActivity() {
             layoutInflater,
             content_main_linear_layout
         )
-        val criadorDeAppBarConfiguration = CriadorDeAppBarConfiguration(drawer_layout)
         viewModel.configura(
             navController = navController,
-            criadorDeToolbarEAppBarConfiguration = CriadorDeToolbarEAppBarConfiguration(
-                criadorDeAppBarLayout,
-                criadorDeAppBarConfiguration),
+            criadorDeToolbar = CriadorDeToolbar(criadorDeAppBarLayout),
+            criadorDeAppBarConfiguration = CriadorDeAppBarConfiguration(drawer_layout),
             aoAlterarAToolbar = { toolbar, appBarConfiguration ->
                 configuraAcaoAoAlterarToolbar(toolbar, appBarConfiguration)
             })

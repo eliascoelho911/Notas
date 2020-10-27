@@ -46,7 +46,6 @@ class NotasFragment : Fragment() {
         }
     }
 
-
     private fun configuraNotaBarComNavController() {
         fragment_notas_nova_nota_bar.setupWithNavController(navController)
     }
