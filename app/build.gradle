@@ -61,4 +61,5 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version"
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0-beta01'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-beta01'
+    debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
 }

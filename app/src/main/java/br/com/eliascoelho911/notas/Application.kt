@@ -2,6 +2,7 @@ package br.com.eliascoelho911.notas
 
 import android.app.Application
 import br.com.eliascoelho911.notas.di.*
+import com.amitshekhar.DebugDB
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -12,6 +13,7 @@ class Application : Application() {
             androidContext(this@Application)
             modules(othersModules, dbModule, repositoryModule, daoRepository, viewModelModules)
         }
+        DebugDB.getAddressLog()
     }
 }
 

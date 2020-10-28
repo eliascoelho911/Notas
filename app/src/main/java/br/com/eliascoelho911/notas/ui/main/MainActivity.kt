@@ -1,6 +1,9 @@
 package br.com.eliascoelho911.notas.ui.main
 
 import android.os.Bundle
+import android.util.Log
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
@@ -19,7 +22,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private var appBarConfiguration: AppBarConfiguration? = null
     private val viewModel: MainViewModel by viewModel()
     private val navController: NavController by lazy {
         findNavController(R.id.nav_host)
@@ -46,13 +48,18 @@ class MainActivity : AppCompatActivity() {
             })
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home)
+            onBackPressed()
+        return super.onOptionsItemSelected(item)
+    }
+
     private fun configuraAcaoAoAlterarToolbar(
         toolbar: Toolbar,
-        appBarConfiguration: AppBarConfiguration?
+        appBarConfiguration: AppBarConfiguration
     ) {
         setSupportActionBar(toolbar)
-        this.appBarConfiguration = appBarConfiguration
-        appBarConfiguration?.run { setupActionBarWithNavController(navController, this) }
+        setupActionBarWithNavController(navController, appBarConfiguration)
     }
 
     private fun configuraNavViewComNavController() {
@@ -60,7 +67,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return appBarConfiguration?.run { navController.navigateUp(this) || super.onSupportNavigateUp() }
-            ?: super.onSupportNavigateUp()
+        return navController.navigateUp(viewModel.appBarConfiguration) || super.onSupportNavigateUp()
     }
 }

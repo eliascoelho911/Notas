@@ -23,10 +23,4 @@ class NotasViewModel : ViewModel() {
             quandoBuscar(notas)
         }
     }
-
-    fun salvar(nota: Nota) {
-        viewModelScope.launch {
-            repository.salva(nota)
-        }
-    }
 }

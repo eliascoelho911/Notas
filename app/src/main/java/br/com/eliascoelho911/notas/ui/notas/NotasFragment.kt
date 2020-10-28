@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.ui.setupWithNavController
 import br.com.eliascoelho911.notas.R
 import br.com.eliascoelho911.notas.ui.main.MainViewModel
-import br.com.eliascoelho911.notas.ui.recyclerview.adapter.ListaNotasAdapter
 import kotlinx.android.synthetic.main.fragment_notas.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -20,7 +19,7 @@ class NotasFragment : Fragment() {
     private val mainViewModel: MainViewModel by sharedViewModel()
     private val manipuladorDeListaDeNotas: ManipuladorDeListaDeNotas by inject()
     private val navController by lazy {
-        mainViewModel.navControlller
+        mainViewModel.navController
     }
 
     override fun onCreateView(
@@ -64,7 +63,7 @@ class NotasFragment : Fragment() {
     private fun buscaNotas() {
         viewModel.todas { livedata ->
             livedata.observe(viewLifecycleOwner, { notas ->
-                fragment_notas_lista_de_notas.adapter = ListaNotasAdapter(notas)
+                manipuladorDeListaDeNotas.atualizaLista(fragment_notas_lista_de_notas, notas)
             })
         }
     }
