@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.fragment_formulario.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class FormularioFragment : Fragment() {
+open class FormularioFragment : Fragment() {
     private val mainViewModel: MainViewModel by sharedViewModel()
     private val viewModel: FormularioViewModel by viewModel()
 
@@ -35,10 +35,15 @@ class FormularioFragment : Fragment() {
 
     private fun configuraAcaoDoBotaoVoltar() {
         requireActivity().onBackPressedDispatcher.addCallback(this) {
-            if (algumCampoEstiverPreenchido())
-                salvaNota()
+            salvaNotaSeAlgumCampoEstiverPreenchido()
             escondeTeclado()
             mainViewModel.navController.popBackStack()
+        }
+    }
+
+    fun salvaNotaSeAlgumCampoEstiverPreenchido() {
+        if (algumCampoEstiverPreenchido()) {
+            salvaNota(criaNota())
         }
     }
 
@@ -48,15 +53,18 @@ class FormularioFragment : Fragment() {
         imm.hideSoftInputFromWindow(fragment_formulario_nota.windowToken, 0)
     }
 
-    private fun algumCampoEstiverPreenchido(): Boolean {
+    open fun algumCampoEstiverPreenchido(): Boolean {
         return fragment_formulario_titulo.text.isNotEmpty() || fragment_formulario_nota.text.isNotEmpty()
     }
 
-    private fun salvaNota() {
+    open fun salvaNota(nota: Nota) {
+        viewModel.salvar(nota)
+    }
+
+    open fun criaNota(): Nota {
         val titulo = fragment_formulario_titulo.text.toString()
         val descricao = fragment_formulario_nota.text.toString()
-        val nota = Nota(titulo = titulo, descricao = descricao)
-        viewModel.salvar(nota)
+        return Nota(titulo = titulo, descricao = descricao)
     }
 
     private fun exibeToolbar() {
