@@ -35,15 +35,15 @@ open class FormularioFragment : Fragment() {
 
     private fun configuraAcaoDoBotaoVoltar() {
         requireActivity().onBackPressedDispatcher.addCallback(this) {
-            salvaNotaSeAlgumCampoEstiverPreenchido()
+            salvaNotaSeAlgumCampoEstiverPreenchido(viewModel)
             escondeTeclado()
             mainViewModel.navController.popBackStack()
         }
     }
 
-    fun salvaNotaSeAlgumCampoEstiverPreenchido() {
+    fun salvaNotaSeAlgumCampoEstiverPreenchido(viewModel: FormularioViewModel) {
         if (algumCampoEstiverPreenchido()) {
-            salvaNota(criaNota())
+            salvaNota(criaNota(), viewModel)
         }
     }
 
@@ -57,7 +57,7 @@ open class FormularioFragment : Fragment() {
         return fragment_formulario_titulo.text.isNotEmpty() || fragment_formulario_nota.text.isNotEmpty()
     }
 
-    open fun salvaNota(nota: Nota) {
+    open fun salvaNota(nota: Nota, viewModel: FormularioViewModel) {
         viewModel.salvar(nota)
     }
 
