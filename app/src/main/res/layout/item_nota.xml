@@ -43,6 +43,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="@dimen/padding_item_nota"
                 android:textColor="@color/primary_text_color"
+                android:text="@{nota.descricao}"
                 android:textAppearance="@style/AppTheme.TextAppearance.Body1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/item_nota_titulo"

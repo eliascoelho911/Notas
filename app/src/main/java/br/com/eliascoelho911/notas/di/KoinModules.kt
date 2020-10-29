@@ -16,7 +16,10 @@ val othersModules = module {
 }
 
 val dbModule = module {
-    single<AppDataBase> { Room.databaseBuilder(get(), AppDataBase::class.java, "notas.db").build() }
+    single<AppDataBase> {
+        Room.databaseBuilder(get(), AppDataBase::class.java, "notas.db")
+            .fallbackToDestructiveMigration().build()
+    }
 }
 
 val repositoryModule = module {

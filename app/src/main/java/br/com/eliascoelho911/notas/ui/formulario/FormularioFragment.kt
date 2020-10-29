@@ -4,13 +4,16 @@ import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.observe
 import br.com.eliascoelho911.notas.R
+import br.com.eliascoelho911.notas.databinding.FragmentFormularioBinding
 import br.com.eliascoelho911.notas.model.Nota
-import br.com.eliascoelho911.notas.model.Texto
 import br.com.eliascoelho911.notas.ui.main.MainViewModel
 import kotlinx.android.synthetic.main.fragment_formulario.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -26,12 +29,27 @@ open class FormularioFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         exibeToolbar()
-        return inflater.inflate(R.layout.fragment_formulario, container, false)
+        criaNotaData()
+        val binding = FragmentFormularioBinding.inflate(layoutInflater, container, false)
+        binding.nota = viewModel.notaData
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         configuraAcaoDoBotaoVoltar()
+        corrigeVisibilidadeDasViews()
+    }
+
+    private fun corrigeVisibilidadeDasViews() {
+        viewModel.notaData.descricao.observe(viewLifecycleOwner, {
+            fragment_formulario_descricao_texto.visibility = it?.run { VISIBLE } ?: GONE
+            fragment_formulario_descricao_tasklist.visibility = it?.run { GONE } ?: VISIBLE
+        })
+    }
+
+    private fun criaNotaData() {
+        viewModel.notaData = NotaData(Nota())
     }
 
     private fun configuraAcaoDoBotaoVoltar() {
@@ -65,7 +83,7 @@ open class FormularioFragment : Fragment() {
     open fun criaNota(): Nota {
         val titulo = fragment_formulario_titulo.text.toString()
         val descricao = fragment_formulario_descricao_texto.text.toString()
-        return Nota(titulo = titulo, descricao = Texto(descricao))
+        return Nota(titulo = titulo, descricao = descricao)
     }
 
     private fun exibeToolbar() {

@@ -9,6 +9,7 @@ import org.koin.java.KoinJavaComponent.inject
 
 open class FormularioViewModel : ViewModel() {
     private val repository: NotaRepository by inject(NotaRepository::class.java)
+    internal lateinit var notaData: NotaData
 
     open fun salvar(nota: Nota) {
         viewModelScope.launch {

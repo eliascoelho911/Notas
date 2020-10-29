@@ -7,22 +7,7 @@ import androidx.room.PrimaryKey
 data class Nota(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
-    val titulo: String = "Titulo",
-    val descricao: Descricao = Texto("Descricao"),
+    val titulo: String = "",
+    val descricao: String? = "",
+    val taskList: List<String>? = null
 )
-
-interface Descricao {
-    fun valor(): Any
-}
-
-class Texto(private val s: String) : Descricao {
-    override fun valor(): String {
-        return s;
-    }
-}
-
-class Tasklist(private val list: List<String>) : Descricao {
-    override fun valor(): List<String> {
-        return list
-    }
-}
