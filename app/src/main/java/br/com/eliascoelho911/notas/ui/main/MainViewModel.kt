@@ -1,7 +1,5 @@
 package br.com.eliascoelho911.notas.ui.main
 
-import android.util.Log
-import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModel

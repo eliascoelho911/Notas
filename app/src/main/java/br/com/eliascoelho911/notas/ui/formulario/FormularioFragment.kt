@@ -10,6 +10,7 @@ import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import br.com.eliascoelho911.notas.R
 import br.com.eliascoelho911.notas.model.Nota
+import br.com.eliascoelho911.notas.model.Texto
 import br.com.eliascoelho911.notas.ui.main.MainViewModel
 import kotlinx.android.synthetic.main.fragment_formulario.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -50,11 +51,11 @@ open class FormularioFragment : Fragment() {
     private fun escondeTeclado() {
         val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(fragment_formulario_titulo.windowToken, 0)
-        imm.hideSoftInputFromWindow(fragment_formulario_nota.windowToken, 0)
+        imm.hideSoftInputFromWindow(fragment_formulario_descricao_texto.windowToken, 0)
     }
 
     open fun algumCampoEstiverPreenchido(): Boolean {
-        return fragment_formulario_titulo.text.isNotEmpty() || fragment_formulario_nota.text.isNotEmpty()
+        return fragment_formulario_titulo.text.isNotEmpty() || fragment_formulario_descricao_texto.text.isNotEmpty()
     }
 
     open fun salvaNota(nota: Nota, viewModel: FormularioViewModel) {
@@ -63,8 +64,8 @@ open class FormularioFragment : Fragment() {
 
     open fun criaNota(): Nota {
         val titulo = fragment_formulario_titulo.text.toString()
-        val descricao = fragment_formulario_nota.text.toString()
-        return Nota(titulo = titulo, descricao = descricao)
+        val descricao = fragment_formulario_descricao_texto.text.toString()
+        return Nota(titulo = titulo, descricao = Texto(descricao))
     }
 
     private fun exibeToolbar() {

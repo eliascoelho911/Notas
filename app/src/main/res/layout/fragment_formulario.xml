@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -28,7 +29,7 @@
             android:inputType="none" />
 
         <EditText
-            android:id="@+id/fragment_formulario_nota"
+            android:id="@+id/fragment_formulario_descricao_texto"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
@@ -43,6 +44,16 @@
             android:textColorHint="@color/primary_text_color_hint"
             android:textSize="16sp"
             android:importantForAutofill="no"
-            android:inputType="none"/>
+            android:inputType="none" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/fragment_formulario_descricao_tasklist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/formulario_item_margin"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/formulario_item_margin"
+            android:layout_marginBottom="@dimen/formulario_item_margin"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
     </LinearLayout>
 </ScrollView>

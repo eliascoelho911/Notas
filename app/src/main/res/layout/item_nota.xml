@@ -42,7 +42,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="@dimen/padding_item_nota"
-                android:text="@{nota.descricao}"
                 android:textColor="@color/primary_text_color"
                 android:textAppearance="@style/AppTheme.TextAppearance.Body1"
                 app:layout_constraintBottom_toBottomOf="parent"
