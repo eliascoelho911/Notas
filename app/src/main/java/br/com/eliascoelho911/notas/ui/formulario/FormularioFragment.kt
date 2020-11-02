@@ -9,8 +9,10 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.addCallback
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
 import br.com.eliascoelho911.notas.R
 import br.com.eliascoelho911.notas.databinding.FragmentFormularioBinding
 import br.com.eliascoelho911.notas.model.Nota
@@ -20,19 +22,30 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 open class FormularioFragment : Fragment() {
-    private val mainViewModel: MainViewModel by sharedViewModel()
     private val viewModel: FormularioViewModel by viewModel()
+    private val mainViewModel: MainViewModel by sharedViewModel()
+    private val navController by lazy {
+        findNavController()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        exibeToolbar()
+        configuraMainViewModel()
         criaNotaData()
-        val binding = FragmentFormularioBinding.inflate(layoutInflater, container, false)
-        binding.nota = viewModel.notaData
-        return binding.root
+        return getBinding(container).root
+    }
+
+    private fun getBinding(container: ViewGroup?): FragmentFormularioBinding {
+        return FragmentFormularioBinding.inflate(layoutInflater, container, false).apply {
+            nota = viewModel.notaData
+        }
+    }
+
+    private fun configuraMainViewModel() {
+        mainViewModel.configurarLayout(fabVisivel = false, bottomAppBarVisivel = false, hideOnScroll = false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -56,7 +69,7 @@ open class FormularioFragment : Fragment() {
         requireActivity().onBackPressedDispatcher.addCallback(this) {
             salvaNotaSeAlgumCampoEstiverPreenchido(viewModel)
             escondeTeclado()
-            mainViewModel.navController.popBackStack()
+            navController.popBackStack()
         }
     }
 
@@ -86,7 +99,4 @@ open class FormularioFragment : Fragment() {
         return Nota(titulo = titulo, descricao = descricao)
     }
 
-    private fun exibeToolbar() {
-        mainViewModel.toolbar(R.layout.toolbar)
-    }
 }

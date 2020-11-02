@@ -1,69 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="nota"
             type="br.com.eliascoelho911.notas.ui.formulario.NotaData" />
     </data>
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background_tela"
-        android:fillViewport="true"
-        android:orientation="vertical">
+        android:background="@color/background_tela">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ScrollView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:fillViewport="true"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toTopOf="@id/fragment_formulario_menu_layout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/fragment_formulario_titulo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/formulario_item_margin"
+                        android:layout_marginTop="@dimen/formulario_item_margin"
+                        android:layout_marginEnd="@dimen/formulario_item_margin"
+                        android:background="@android:color/transparent"
+                        android:hint="@string/titulo"
+                        android:importantForAutofill="no"
+                        android:inputType="none"
+                        android:text="@{nota.titulo}"
+                        android:textAppearance="@style/AppTheme.TextAppearance.Title"
+                        android:textColor="@color/primary_text_color"
+                        android:textColorHint="@color/primary_text_color_hint"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/fragment_formulario_descricao_texto"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/formulario_item_margin"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="@dimen/formulario_item_margin"
+                        android:layout_marginBottom="@dimen/formulario_item_margin"
+                        android:background="@android:color/transparent"
+                        android:gravity="top"
+                        android:hint="@string/nota"
+                        android:importantForAutofill="no"
+                        android:inputType="none"
+                        android:text="@{nota.descricao}"
+                        android:textAppearance="@style/AppTheme.TextAppearance.Body2"
+                        android:textColor="@color/primary_text_color"
+                        android:textColorHint="@color/primary_text_color_hint"
+                        android:textSize="16sp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/fragment_formulario_descricao_tasklist"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/formulario_item_margin"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="@dimen/formulario_item_margin"
+                        android:layout_marginBottom="@dimen/formulario_item_margin"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                </LinearLayout>
+            </ScrollView>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/fragment_formulario_menu_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <ImageView
+                    android:id="@+id/fragment_formulario_menu_adicionar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_fragment_formulario_menu"
+                    android:layout_marginVertical="16dp"
+                    android:contentDescription="@string/adicionar"
+                    android:src="@drawable/ic_add_box"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@id/fragment_formulario_menu_adicionar"
+                    app:layout_constraintEnd_toStartOf="@id/fragment_formulario_menu_mais"
+                    app:layout_constraintStart_toEndOf="@id/fragment_formulario_menu_adicionar"
+                    app:layout_constraintTop_toTopOf="@id/fragment_formulario_menu_adicionar">
+
+                    <ImageView
+                        android:id="@+id/fragment_formulario_menu_desfazer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/margin_fragment_formulario_menu"
+                        android:contentDescription="@string/desfazer"
+                        android:src="@drawable/ic_undo" />
+
+                    <ImageView
+                        android:id="@+id/fragment_formulario_menu_refazer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/refazer"
+                        android:src="@drawable/ic_redo" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/fragment_formulario_menu_mais"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_fragment_formulario_menu"
+                    android:contentDescription="@string/mais_opcoes"
+                    android:src="@drawable/ic_more_vert"
+                    app:layout_constraintBottom_toBottomOf="@id/fragment_formulario_menu_adicionar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/fragment_formulario_menu_adicionar" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.Design.BottomSheet.Modal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/fragment_formulario_titulo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/formulario_item_margin"
-                android:layout_marginTop="@dimen/formulario_item_margin"
-                android:layout_marginEnd="@dimen/formulario_item_margin"
-                android:background="@android:color/transparent"
-                android:hint="@string/titulo"
-                android:text="@{nota.titulo}"
-                android:importantForAutofill="no"
-                android:inputType="none"
-                android:textAppearance="@style/AppTheme.TextAppearance.Title"
-                android:textColor="@color/primary_text_color"
-                android:textColorHint="@color/primary_text_color_hint"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/fragment_formulario_descricao_texto"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/formulario_item_margin"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="@dimen/formulario_item_margin"
-                android:layout_marginBottom="@dimen/formulario_item_margin"
-                android:background="@android:color/transparent"
-                android:gravity="top"
-                android:text="@{nota.descricao}"
-                android:hint="@string/nota"
-                android:importantForAutofill="no"
-                android:inputType="none"
-                android:textAppearance="@style/AppTheme.TextAppearance.Body2"
-                android:textColor="@color/primary_text_color"
-                android:textColorHint="@color/primary_text_color_hint"
-                android:textSize="16sp" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/fragment_formulario_descricao_tasklist"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/formulario_item_margin"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="@dimen/formulario_item_margin"
-                android:layout_marginBottom="@dimen/formulario_item_margin"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-        </LinearLayout>
-    </ScrollView>
+            app:behavior_peekHeight="0dp"
+            app:cardBackgroundColor="@color/colorPrimary"
+            app:cardElevation="8dp"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"/>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

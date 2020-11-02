@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="margin_toolbar">16dp</dimen>
+    <dimen name="margin_horizontal">16dp</dimen>
     <dimen name="padding_item_nota">16dp</dimen>
     <dimen name="formulario_item_margin">16dp</dimen>
+    <dimen name="margin_fragment_formulario_menu">16dp</dimen>
 </resources>

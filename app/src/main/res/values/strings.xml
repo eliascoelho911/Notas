@@ -10,4 +10,8 @@
     <string name="nota">Nota</string>
     <string name="inserir_nota">Inserir Nota</string>
     <string name="imagem">Imagem</string>
+    <string name="refazer">Refazer</string>
+    <string name="mais_opcoes">Mais opções</string>
+    <string name="adicionar">Adicionar</string>
+    <string name="desfazer">Desfazer</string>
 </resources>

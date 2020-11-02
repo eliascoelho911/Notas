@@ -1,7 +1,6 @@
 package br.com.eliascoelho911.notas.ui.formulario
 
 import br.com.eliascoelho911.notas.model.Nota
-import br.com.eliascoelho911.notas.model.Texto
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
@@ -20,7 +19,7 @@ class FormularioFragmentTest {
     @Test
     fun deve_SalvarNota_QuandoAlgumCampoEstiverPreenchido() {
         doReturn(true).`when`(fragment).algumCampoEstiverPreenchido()
-        val nota = Nota(titulo = "teste", descricao = Texto("teste"))
+        val nota = Nota(titulo = "teste", descricao = "teste")
         doReturn(nota).`when`(fragment).criaNota()
         fragment.salvaNotaSeAlgumCampoEstiverPreenchido(viewModel)
         verify(fragment).salvaNota(nota, viewModel)
