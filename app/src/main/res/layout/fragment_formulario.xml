@@ -11,6 +11,10 @@
         <variable
             name="aoClicarNoBotaoAdicionar"
             type="android.view.View.OnClickListener" />
+
+        <variable
+            name="aoClicarNoBotaoOpcoes"
+            type="android.view.View.OnClickListener" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -111,7 +115,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="@id/fragment_formulario_menu_adicionar"
-                    app:layout_constraintEnd_toStartOf="@id/fragment_formulario_menu_mais"
+                    app:layout_constraintEnd_toStartOf="@id/fragment_formulario_menu_opcoes"
                     app:layout_constraintStart_toEndOf="@id/fragment_formulario_menu_adicionar"
                     app:layout_constraintTop_toTopOf="@id/fragment_formulario_menu_adicionar">
 
@@ -132,9 +136,10 @@
                 </LinearLayout>
 
                 <ImageView
-                    android:id="@+id/fragment_formulario_menu_mais"
+                    android:id="@+id/fragment_formulario_menu_opcoes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:onClick="@{aoClicarNoBotaoOpcoes}"
                     android:layout_marginEnd="@dimen/margin_fragment_formulario_menu"
                     android:contentDescription="@string/mais_opcoes"
                     android:src="@drawable/ic_more_vert"

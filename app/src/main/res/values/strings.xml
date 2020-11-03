@@ -17,4 +17,7 @@
     <string name="tirar_foto">Tirar foto</string>
     <string name="adicionar_imagem">Adicionar imagem</string>
     <string name="caixas_de_selecao">Caixas de seleção</string>
+    <string name="cor">Cor</string>
+    <string name="excluir">Excluir</string>
+    <string name="marcadores">Marcadores</string>
 </resources>

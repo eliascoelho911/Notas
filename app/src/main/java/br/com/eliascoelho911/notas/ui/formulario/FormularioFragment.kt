@@ -46,7 +46,14 @@ open class FormularioFragment : Fragment() {
             aoClicarNoBotaoAdicionar = View.OnClickListener {
                 exibeBottomSheetAdicionar()
             }
+            aoClicarNoBotaoOpcoes = View.OnClickListener {
+                exibeBottomSheetOpcoes()
+            }
         }
+    }
+
+    private fun exibeBottomSheetOpcoes() {
+        BottomSheetOpcoes().show(requireActivity().supportFragmentManager, null)
     }
 
     private fun configuraMainViewModel() {

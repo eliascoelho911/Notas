@@ -1,4 +1,4 @@
-package br.com.eliascoelho911.notas.ui.formulario
+package br.com.eliascoelho911.notas.ui.listview.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -10,7 +10,7 @@ import br.com.eliascoelho911.notas.databinding.ItemMenuBinding
 import br.com.eliascoelho911.notas.model.ItemMenu
 import org.koin.java.KoinJavaComponent.inject
 
-class BottomSheetAdicionarAdapter(
+class ItemMenuAdapter(
     private val list: List<ItemMenu>,
 ) : BaseAdapter() {
     private val context: Context by inject(Context::class.java)
