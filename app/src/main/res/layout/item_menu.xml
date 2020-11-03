@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="item"
+            type="br.com.eliascoelho911.notas.model.ItemMenu" />
+    </data>
+
+    <TextView
+        android:id="@+id/item_menu_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawablePadding="32dp"
+        android:padding="@dimen/formulario_item_margin"
+        android:text="@{item.texto}"
+        android:textAppearance="@style/AppTheme.TextAppearance.Body2"
+        android:drawableStart="@{item.drawableObject}"
+        tools:background="@color/colorPrimaryDark"
+        tools:drawableStart="@drawable/ic_check_box"
+        tools:text="@string/app_name"
+        tools:ignore="UseCompatTextViewDrawableXml" />
+</layout>
