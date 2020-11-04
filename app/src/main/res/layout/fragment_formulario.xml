@@ -116,16 +116,16 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@id/fragment_formulario_menu_adicionar"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/fragment_formulario_menu_opcoes"
                     app:layout_constraintStart_toEndOf="@id/fragment_formulario_menu_adicionar"
-                    app:layout_constraintTop_toTopOf="@id/fragment_formulario_menu_adicionar">
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <ImageView
                         android:id="@+id/fragment_formulario_menu_desfazer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/margin_fragment_formulario_menu"
+                        android:padding="@dimen/margin_fragment_formulario_menu"
                         android:contentDescription="@string/desfazer"
                         android:src="@drawable/ic_undo" />
 
@@ -133,6 +133,7 @@
                         android:id="@+id/fragment_formulario_menu_refazer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:padding="@dimen/margin_fragment_formulario_menu"
                         android:contentDescription="@string/refazer"
                         android:src="@drawable/ic_redo" />
                 </LinearLayout>
@@ -142,12 +143,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="@{aoClicarNoBotaoOpcoes}"
-                    android:layout_marginEnd="@dimen/margin_fragment_formulario_menu"
+                    android:padding="@dimen/margin_fragment_formulario_menu"
                     android:contentDescription="@string/mais_opcoes"
                     android:src="@drawable/ic_more_vert"
-                    app:layout_constraintBottom_toBottomOf="@id/fragment_formulario_menu_adicionar"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/fragment_formulario_menu_adicionar" />
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
