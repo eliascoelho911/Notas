@@ -13,7 +13,7 @@ import br.com.eliascoelho911.notas.ui.recyclerview.adapter.CoresAdapter
 import br.com.eliascoelho911.notas.ui.util.getColor
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class BottomSheetOpcoes(
+open class BottomSheetOpcoes(
     private val notaData: NotaData,
 ) : BottomSheetDialogFragment() {
     override fun onCreateView(

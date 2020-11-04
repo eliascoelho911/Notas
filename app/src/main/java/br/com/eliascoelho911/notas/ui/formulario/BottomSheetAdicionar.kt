@@ -12,7 +12,7 @@ import br.com.eliascoelho911.notas.model.ItemMenu
 import br.com.eliascoelho911.notas.ui.listview.adapter.ItemMenuAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class BottomSheetAdicionar : BottomSheetDialogFragment() {
+open class BottomSheetAdicionar : BottomSheetDialogFragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

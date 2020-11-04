@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import br.com.eliascoelho911.notas.databinding.FragmentFormularioBinding
@@ -51,25 +52,33 @@ open class FormularioFragment : Fragment() {
         }
     }
 
-    private fun exibeBottomSheetAdicionar() {
-        BottomSheetAdicionar().show(requireActivity().supportFragmentManager, null)
+    open fun exibeBottomSheetAdicionar(
+        bottomSheetAdicionar: BottomSheetAdicionar,
+        fragmentManager: FragmentManager,
+    ) {
+        bottomSheetAdicionar.show(fragmentManager, null)
     }
 
     private fun getBinding(container: ViewGroup?): FragmentFormularioBinding {
         return FragmentFormularioBinding.inflate(layoutInflater, container, false).apply {
             nota = viewModel.notaData
             aoClicarNoBotaoAdicionar = View.OnClickListener {
-                exibeBottomSheetAdicionar()
+                exibeBottomSheetAdicionar(BottomSheetAdicionar(),
+                    requireActivity().supportFragmentManager)
             }
             aoClicarNoBotaoOpcoes = View.OnClickListener {
-                exibeBottomSheetOpcoes()
+                exibeBottomSheetOpcoes(BottomSheetOpcoes(viewModel.notaData),
+                    requireActivity().supportFragmentManager)
             }
             lifecycleOwner = this@FormularioFragment.viewLifecycleOwner
         }
     }
 
-    private fun exibeBottomSheetOpcoes() {
-        BottomSheetOpcoes(viewModel.notaData).show(requireActivity().supportFragmentManager, null)
+    open fun exibeBottomSheetOpcoes(
+        bottomSheetOpcoes: BottomSheetOpcoes,
+        fragmentManager: FragmentManager,
+    ) {
+        bottomSheetOpcoes.show(fragmentManager, null)
     }
 
     private fun configuraMainViewModel() {
