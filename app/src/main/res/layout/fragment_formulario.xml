@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -20,7 +21,8 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background_tela">
+        backgroundColor="@{nota.cor}"
+        tools:background="@color/azul_marinho">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -53,7 +55,7 @@
                         android:hint="@string/titulo"
                         android:importantForAutofill="no"
                         android:inputType="none"
-                        android:text="@{nota.titulo}"
+                        android:text="@={nota.titulo}"
                         android:textAppearance="@style/AppTheme.TextAppearance.Title"
                         android:textColor="@color/primary_text_color"
                         android:textColorHint="@color/primary_text_color_hint"
@@ -72,7 +74,7 @@
                         android:hint="@string/nota"
                         android:importantForAutofill="no"
                         android:inputType="none"
-                        android:text="@{nota.descricao}"
+                        android:text="@={nota.descricao}"
                         android:textAppearance="@style/AppTheme.TextAppearance.Body2"
                         android:textColor="@color/primary_text_color"
                         android:textColorHint="@color/primary_text_color_hint"
@@ -148,13 +150,5 @@
                     app:layout_constraintTop_toTopOf="@id/fragment_formulario_menu_adicionar" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/fragment_formulario_bottom_sheet_adicionar"
-            style="@style/Widget.Design.BottomSheet.Modal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardElevation="8dp"
-            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

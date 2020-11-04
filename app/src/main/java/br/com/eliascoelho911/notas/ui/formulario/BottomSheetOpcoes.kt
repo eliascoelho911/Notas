@@ -13,7 +13,9 @@ import br.com.eliascoelho911.notas.ui.recyclerview.adapter.CoresAdapter
 import br.com.eliascoelho911.notas.ui.util.getColor
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class BottomSheetOpcoes : BottomSheetDialogFragment() {
+class BottomSheetOpcoes(
+    private val notaData: NotaData,
+) : BottomSheetDialogFragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -24,7 +26,10 @@ class BottomSheetOpcoes : BottomSheetDialogFragment() {
             findViewById<ListView>(R.id.bottom_sheet_formulario_opcoes_lista).adapter =
                 ItemMenuAdapter(opcoes())
             findViewById<RecyclerView>(R.id.bottom_sheet_formulario_opcoes_cores).adapter =
-                CoresAdapter(cores())
+                CoresAdapter(cores(), corDaNota = notaData.cor, onClick = { cor ->
+                    notaData.cor.value = cor
+                    this@BottomSheetOpcoes.dismiss()
+                })
         }
     }
 

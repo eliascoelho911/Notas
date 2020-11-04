@@ -2,6 +2,7 @@ package br.com.eliascoelho911.notas.ui.formulario
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
@@ -49,11 +50,12 @@ open class FormularioFragment : Fragment() {
             aoClicarNoBotaoOpcoes = View.OnClickListener {
                 exibeBottomSheetOpcoes()
             }
+            lifecycleOwner = this@FormularioFragment.viewLifecycleOwner
         }
     }
 
     private fun exibeBottomSheetOpcoes() {
-        BottomSheetOpcoes().show(requireActivity().supportFragmentManager, null)
+        BottomSheetOpcoes(viewModel.notaData).show(requireActivity().supportFragmentManager, null)
     }
 
     private fun configuraMainViewModel() {
@@ -109,9 +111,7 @@ open class FormularioFragment : Fragment() {
     }
 
     open fun criaNota(): Nota {
-        val titulo = fragment_formulario_titulo.text.toString()
-        val descricao = fragment_formulario_descricao_texto.text.toString()
-        return Nota(titulo = titulo, descricao = descricao)
+        return viewModel.notaData.paraNota()
     }
 
 }

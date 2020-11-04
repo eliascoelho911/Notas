@@ -8,7 +8,7 @@ import br.com.eliascoelho911.notas.database.dao.NotaDao
 import br.com.eliascoelho911.notas.model.Nota
 
 @TypeConverters(ListStringConverter::class)
-@Database(entities = [Nota::class], version = 3, exportSchema = false)
+@Database(entities = [Nota::class], version = 4, exportSchema = false)
 abstract class AppDataBase : RoomDatabase() {
     abstract fun getNotaDao() : NotaDao
 }

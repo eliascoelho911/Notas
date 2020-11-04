@@ -3,6 +3,9 @@ package br.com.eliascoelho911.notas.ui.recyclerview.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LifecycleRegistry
 import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -33,7 +36,7 @@ class ListaNotasAdapter(private var notas: List<Nota> = listOf()) :
 
     override fun getItemCount() = notas.size
 
-    class NotaViewHolder(private val binding: ItemNotaBinding) : ViewHolder(binding.root) {
+    inner class NotaViewHolder(private val binding: ItemNotaBinding) : ViewHolder(binding.root) {
         fun vincula(nota: Nota) {
             binding.nota = nota
         }

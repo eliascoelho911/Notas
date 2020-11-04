@@ -7,6 +7,14 @@
         <variable
             name="cor"
             type="Integer" />
+
+        <variable
+            name="onClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="foreground"
+            type="androidx.databinding.ObservableField&lt;android.graphics.drawable.Drawable>" />
     </data>
 
     <ImageView
@@ -16,5 +24,8 @@
         android:layout_margin="8dp"
         android:contentDescription="@string/cor"
         android:src="@drawable/background_circulo_item_cor"
-        tools:tint="@color/azul" />
+        android:foreground="@{foreground}"
+        android:onClick="@{onClick}"
+        tools:tint="@color/azul"
+        tools:foreground="@drawable/background_circulo_item_cor_stroke"/>
 </layout>
