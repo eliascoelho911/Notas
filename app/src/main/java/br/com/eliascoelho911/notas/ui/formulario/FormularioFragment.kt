@@ -2,8 +2,8 @@ package br.com.eliascoelho911.notas.ui.formulario
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
@@ -35,6 +35,20 @@ open class FormularioFragment : Fragment() {
         configuraMainViewModel()
         criaNotaData()
         return getBinding(container).root
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home)
+            requireActivity().onBackPressed()
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun configuraAcaoDoBotaoVoltar() {
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+            salvaNotaSeAlgumCampoEstiverPreenchido(viewModel)
+            escondeTeclado()
+            navController.popBackStack()
+        }
     }
 
     private fun exibeBottomSheetAdicionar() {
@@ -80,14 +94,6 @@ open class FormularioFragment : Fragment() {
 
     private fun criaNotaData() {
         viewModel.notaData = NotaData(Nota())
-    }
-
-    private fun configuraAcaoDoBotaoVoltar() {
-        requireActivity().onBackPressedDispatcher.addCallback(this) {
-            salvaNotaSeAlgumCampoEstiverPreenchido(viewModel)
-            escondeTeclado()
-            navController.popBackStack()
-        }
     }
 
     fun salvaNotaSeAlgumCampoEstiverPreenchido(viewModel: FormularioViewModel) {
