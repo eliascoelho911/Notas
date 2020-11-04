@@ -19,7 +19,9 @@ class BottomSheetAdicionar : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?,
     ): View? {
         return ListView(requireContext()).apply {
-            background = ColorDrawable(ContextCompat.getColor(requireContext(), R.color.colorPrimaryDark))
+            dividerHeight = 0
+            background =
+                ColorDrawable(ContextCompat.getColor(requireContext(), R.color.colorPrimary))
             adapter = ItemMenuAdapter(opcoes())
         }
     }
