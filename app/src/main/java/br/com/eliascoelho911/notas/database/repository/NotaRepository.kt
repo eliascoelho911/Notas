@@ -21,4 +21,10 @@ class NotaRepository {
             dao.salva(nota)
         }
     }
+
+    suspend fun deleta(nota: Nota) {
+        withContext(IO) {
+            dao.deleta(nota)
+        }
+    }
 }

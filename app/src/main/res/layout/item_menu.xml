@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:drawablePadding="32dp"
         android:padding="@dimen/formulario_item_margin"
+        android:onClick="@{item.acaoAoClicar}"
         android:text="@{item.texto}"
         android:textAppearance="@style/AppTheme.TextAppearance.Body2"
         android:drawableStart="@{item.drawableObject}"

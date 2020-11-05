@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import br.com.eliascoelho911.notas.R
 import br.com.eliascoelho911.notas.model.ItemMenu
@@ -12,10 +13,13 @@ import br.com.eliascoelho911.notas.ui.listview.adapter.ItemMenuAdapter
 import br.com.eliascoelho911.notas.ui.recyclerview.adapter.CoresAdapter
 import br.com.eliascoelho911.notas.ui.util.getColor
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 open class BottomSheetOpcoes(
     private val notaData: NotaData,
 ) : BottomSheetDialogFragment() {
+    private val formularioViewModel: FormularioViewModel by sharedViewModel()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -33,8 +37,12 @@ open class BottomSheetOpcoes(
         }
     }
 
-    private fun opcoes() = listOf(ItemMenu(getString(R.string.excluir), R.drawable.ic_delete),
-        ItemMenu(getString(R.string.marcadores), R.drawable.ic_label))
+    private fun opcoes() =
+        listOf(ItemMenu(getString(R.string.excluir), R.drawable.ic_delete) {
+            formularioViewModel.deleta(notaData.paraNota())
+            dismiss()
+            findNavController().popBackStack()
+        }, ItemMenu(getString(R.string.marcadores), R.drawable.ic_label))
 
     private fun cores() = listOf(getColor(R.color.background_tela),
         getColor(R.color.azul),

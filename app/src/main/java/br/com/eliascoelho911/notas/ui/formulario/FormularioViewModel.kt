@@ -16,4 +16,10 @@ open class FormularioViewModel : ViewModel() {
             repository.salva(nota)
         }
     }
+
+    fun deleta(nota: Nota) {
+        viewModelScope.launch {
+            repository.deleta(nota)
+        }
+    }
 }
