@@ -22,11 +22,11 @@
         android:onClick="@{onClick}"
         app:cardElevation="0dp"
         android:theme="@style/Theme.MaterialComponents.Light"
-        app:cardBackgroundColor="@{nota.cor, default=@color/colorPrimaryDark}"
+        app:cardBackgroundColor="@{nota.cor, default=@color/background_tela}"
         app:cardCornerRadius="16dp"
-        app:strokeColor="@color/colorPrimary"
-        app:strokeWidth="2dp"
-        tools:cardBackgroundColor="@color/colorPrimaryDark">
+        app:strokeColor="@color/cinza"
+        app:strokeWidth="1dp"
+        tools:cardBackgroundColor="@color/background_tela">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

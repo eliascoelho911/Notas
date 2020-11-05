@@ -36,12 +36,12 @@ open class BottomSheetOpcoes(
     private fun opcoes() = listOf(ItemMenu(getString(R.string.excluir), R.drawable.ic_delete),
         ItemMenu(getString(R.string.marcadores), R.drawable.ic_label))
 
-    private fun cores() = listOf(getColor(R.color.azul_marinho),
+    private fun cores() = listOf(getColor(R.color.background_tela),
         getColor(R.color.azul),
         getColor(R.color.vermelho),
         getColor(R.color.laranja),
         getColor(R.color.roxo),
         getColor(R.color.amarelo),
-        getColor(R.color.ciano),
+        getColor(R.color.azul_marinho),
         getColor(R.color.verde))
 }
