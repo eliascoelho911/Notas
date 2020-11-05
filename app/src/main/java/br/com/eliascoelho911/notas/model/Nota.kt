@@ -13,7 +13,7 @@ data class Nota(
     val id: Long = 0,
     val titulo: String = "",
     val descricao: String? = "",
-    val taskList: List<String>? = null,
     @ColorInt
     val cor: Int = getColor(R.color.background_tela),
+    val idMarcador: Long? = null,
 ) : Serializable

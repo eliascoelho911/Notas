@@ -64,7 +64,7 @@
                     <EditText
                         android:id="@+id/fragment_formulario_descricao_texto"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/formulario_item_margin"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="@dimen/formulario_item_margin"
@@ -80,15 +80,18 @@
                         android:textColorHint="@color/primary_text_color_hint"
                         android:textSize="16sp" />
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/fragment_formulario_descricao_tasklist"
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/fragment_formulario_marcador"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/background_marcador"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="8dp"
                         android:layout_marginStart="@dimen/formulario_item_margin"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="@dimen/formulario_item_margin"
                         android:layout_marginBottom="@dimen/formulario_item_margin"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                        android:textAppearance="@style/AppTheme.TextAppearance.Body2"
+                        tools:text="Projetos" />
+
                 </LinearLayout>
             </ScrollView>
 

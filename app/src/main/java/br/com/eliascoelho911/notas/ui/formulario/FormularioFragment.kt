@@ -5,14 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import br.com.eliascoelho911.notas.databinding.FragmentFormularioBinding
@@ -97,15 +94,6 @@ open class FormularioFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         configuraAcaoDoBotaoVoltar()
-        corrigeVisibilidadeDasViews()
-    }
-
-    private fun corrigeVisibilidadeDasViews() {
-        @Suppress("COMPATIBILITY_WARNING")
-        viewModel.notaData.descricao.observe(viewLifecycleOwner, {
-            fragment_formulario_descricao_texto.visibility = it?.run { VISIBLE } ?: GONE
-            fragment_formulario_descricao_tasklist.visibility = it?.run { GONE } ?: VISIBLE
-        })
     }
 
     private fun criaNotaData() {

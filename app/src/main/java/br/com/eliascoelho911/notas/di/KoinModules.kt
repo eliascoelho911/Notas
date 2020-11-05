@@ -2,7 +2,9 @@ package br.com.eliascoelho911.notas.di
 
 import androidx.room.Room
 import br.com.eliascoelho911.notas.database.AppDataBase
+import br.com.eliascoelho911.notas.database.dao.NotaCompletaDao
 import br.com.eliascoelho911.notas.database.dao.NotaDao
+import br.com.eliascoelho911.notas.database.repository.NotaCompletaRepository
 import br.com.eliascoelho911.notas.database.repository.NotaRepository
 import br.com.eliascoelho911.notas.ui.formulario.FormularioViewModel
 import br.com.eliascoelho911.notas.ui.main.MainViewModel
@@ -24,10 +26,12 @@ val dbModule = module {
 
 val repositoryModule = module {
     single<NotaRepository> { NotaRepository() }
+    single<NotaCompletaRepository> { NotaCompletaRepository() }
 }
 
 val daoRepository = module {
     single<NotaDao> { get<AppDataBase>().getNotaDao() }
+    single<NotaCompletaDao> { get<AppDataBase>().getNotaCompletaDao() }
 }
 
 val viewModelModules = module {
