@@ -27,8 +27,8 @@
         android:theme="@style/Theme.MaterialComponents.Light"
         app:cardBackgroundColor="@{notaCompleta.nota.cor, default=@color/background_tela}"
         app:cardCornerRadius="16dp"
-        app:strokeColor="@color/cinza"
-        app:strokeWidth="1dp"
+        app:strokeColor="@color/branco_50"
+        app:strokeWidth="@dimen/stroke_item_nota"
         tools:cardBackgroundColor="@color/background_tela">
 
         <androidx.constraintlayout.widget.ConstraintLayout

@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#202020</color>
     <color name="colorAccent">@color/azul</color>
     <color name="primary_text_color">#ffffff</color>
-    <color name="primary_text_color_hint">#80FFFFFF</color>
+    <color name="primary_text_color_hint">@color/branco_50</color>
     <color name="icon_drawer">#ffffff</color>
     <color name="text_drawer">#ffffff</color>
     <color name="background_tela">@color/colorPrimaryDark</color>
@@ -16,5 +16,4 @@
     <color name="azul_marinho">#006064</color>
     <color name="verde">#1B5E20</color>
     <color name="branco_50">#80FFFFFF</color>
-    <color name="cinza">#FCAAAAAA</color>
 </resources>
