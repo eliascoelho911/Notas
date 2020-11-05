@@ -15,5 +15,5 @@ data class Nota(
     val descricao: String? = "",
     val taskList: List<String>? = null,
     @ColorInt
-    val cor: Int = getColor(R.color.colorPrimary),
+    val cor: Int = getColor(R.color.colorPrimaryDark),
 ) : Serializable

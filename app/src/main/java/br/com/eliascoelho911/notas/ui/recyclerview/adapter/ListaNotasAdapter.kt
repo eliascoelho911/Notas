@@ -31,6 +31,8 @@ class ListaNotasAdapter(
     }
 
     fun atualiza(notas: List<Nota>) {
+        if (this.notas == notas)
+            return
         this.notas = notas
         notifyDataSetChanged()
     }

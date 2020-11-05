@@ -24,21 +24,27 @@ class NotasFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         configuraMainViewModel()
         return inflater.inflate(R.layout.fragment_notas, container, false)
     }
 
     private fun configuraMainViewModel() {
-        mainViewModel.configurarLayout(fabVisivel = true, bottomAppBarVisivel = true, hideOnScroll = true)
+        mainViewModel.configurarLayout(fabVisivel = true,
+            bottomAppBarVisivel = true,
+            hideOnScroll = true)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        configuraCliqueFab()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         criaListaDeNotas()
         buscaNotas()
-        configuraCliqueFab()
     }
 
     private fun configuraCliqueFab() {

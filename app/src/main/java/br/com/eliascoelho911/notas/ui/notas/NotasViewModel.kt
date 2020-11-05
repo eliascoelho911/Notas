@@ -17,7 +17,7 @@ class NotasViewModel : ViewModel() {
             viewModelScope.launch {
                 val notasRetornadas = repository.todas()
                 notas = notasRetornadas
-                quandoBuscar(notasRetornadas)
+                quandoBuscar(notas)
             }
         } else {
             quandoBuscar(notas)
