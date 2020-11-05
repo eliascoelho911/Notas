@@ -2,10 +2,8 @@ package br.com.eliascoelho911.notas.ui.recyclerview.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.LifecycleRegistry
 import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -14,7 +12,10 @@ import br.com.eliascoelho911.notas.model.Nota
 import br.com.eliascoelho911.notas.ui.recyclerview.adapter.ListaNotasAdapter.NotaViewHolder
 import org.koin.java.KoinJavaComponent.inject
 
-class ListaNotasAdapter(private var notas: List<Nota> = listOf()) :
+class ListaNotasAdapter(
+    private var notas: List<Nota> = listOf(),
+    private val onClickItem: (nota: Nota) -> Unit,
+) :
     ListAdapter<Nota, NotaViewHolder>(DiffUtil) {
 
     private val context: Context by inject(Context::class.java)
@@ -39,6 +40,9 @@ class ListaNotasAdapter(private var notas: List<Nota> = listOf()) :
     inner class NotaViewHolder(private val binding: ItemNotaBinding) : ViewHolder(binding.root) {
         fun vincula(nota: Nota) {
             binding.nota = nota
+            binding.onClick = View.OnClickListener {
+                onClickItem(nota)
+            }
         }
     }
 

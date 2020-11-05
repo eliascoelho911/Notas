@@ -5,6 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import br.com.eliascoelho911.notas.R
 import br.com.eliascoelho911.notas.ui.util.getColor
+import java.io.Serializable
 
 @Entity
 data class Nota(
@@ -14,5 +15,5 @@ data class Nota(
     val descricao: String? = "",
     val taskList: List<String>? = null,
     @ColorInt
-    val cor: Int = getColor(R.color.colorPrimaryDark)
-)
+    val cor: Int = getColor(R.color.colorPrimary),
+) : Serializable

@@ -8,6 +8,10 @@
         <variable
             name="nota"
             type="br.com.eliascoelho911.notas.model.Nota" />
+
+        <variable
+            name="onClick"
+            type="android.view.View.OnClickListener" />
     </data>
     
     <androidx.cardview.widget.CardView
@@ -15,6 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_horizontal"
         android:layout_marginTop="@dimen/margin_horizontal"
+        android:onClick="@{onClick}"
         app:cardElevation="0dp"
         app:cardCornerRadius="16dp"
         tools:cardBackgroundColor="@color/color"

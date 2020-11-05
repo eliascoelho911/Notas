@@ -18,6 +18,12 @@
         android:id="@+id/nav_formulario"
         android:name="br.com.eliascoelho911.notas.ui.formulario.FormularioFragment"
         android:label="@string/inserir_nota"
-        tools:layout="@layout/fragment_formulario"/>
+        tools:layout="@layout/fragment_formulario">
+        <argument
+            android:name="nota"
+            android:defaultValue="@null"
+            app:argType="br.com.eliascoelho911.notas.model.Nota"
+            app:nullable="true" />
+    </fragment>
 
 </navigation>

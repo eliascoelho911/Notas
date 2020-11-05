@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import br.com.eliascoelho911.notas.R
 import br.com.eliascoelho911.notas.ui.main.MainViewModel
-import com.google.android.material.bottomappbar.BottomAppBar
 import kotlinx.android.synthetic.main.fragment_notas.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -44,12 +43,16 @@ class NotasFragment : Fragment() {
 
     private fun configuraCliqueFab() {
         mainViewModel.modificadorDeFab.setOnClickListener {
-            navController.navigate(R.id.nav_notas_para_nav_formulario)
+            val navNotasParaNavFormulario = NotasFragmentDirections.navNotasParaNavFormulario()
+            navController.navigate(navNotasParaNavFormulario)
         }
     }
 
     private fun criaListaDeNotas() {
-        manipuladorDeListaDeNotas.criaLista(fragment_notas_lista_de_notas)
+        manipuladorDeListaDeNotas.criaLista(fragment_notas_lista_de_notas) { nota ->
+            val navNotasParaNavFormulario = NotasFragmentDirections.navNotasParaNavFormulario(nota)
+            navController.navigate(navNotasParaNavFormulario)
+        }
     }
 
     private fun buscaNotas() {

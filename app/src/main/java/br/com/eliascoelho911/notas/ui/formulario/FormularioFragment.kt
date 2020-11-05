@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import br.com.eliascoelho911.notas.databinding.FragmentFormularioBinding
 import br.com.eliascoelho911.notas.model.Nota
 import br.com.eliascoelho911.notas.ui.main.MainViewModel
@@ -27,6 +28,7 @@ open class FormularioFragment : Fragment() {
     private val navController by lazy {
         findNavController()
     }
+    private val args: FormularioFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,21 +37,26 @@ open class FormularioFragment : Fragment() {
     ): View? {
         configuraMainViewModel()
         criaNotaData()
+        setHasOptionsMenu(true)
         return getBinding(container).root
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home)
-            requireActivity().onBackPressed()
-        return super.onOptionsItemSelected(item)
+            salvaNotaEFechaFormulario()
+        return true
     }
 
     private fun configuraAcaoDoBotaoVoltar() {
         requireActivity().onBackPressedDispatcher.addCallback(this) {
-            salvaNotaSeAlgumCampoEstiverPreenchido(viewModel)
-            escondeTeclado()
-            navController.popBackStack()
+            salvaNotaEFechaFormulario()
         }
+    }
+
+    private fun salvaNotaEFechaFormulario() {
+        salvaNotaSeAlgumCampoEstiverPreenchido(viewModel)
+        escondeTeclado()
+        navController.popBackStack()
     }
 
     open fun exibeBottomSheetAdicionar(
@@ -102,7 +109,8 @@ open class FormularioFragment : Fragment() {
     }
 
     private fun criaNotaData() {
-        viewModel.notaData = NotaData(Nota())
+        val notaData = args.nota?.run { NotaData(this) } ?: NotaData(Nota())
+        viewModel.notaData = notaData
     }
 
     fun salvaNotaSeAlgumCampoEstiverPreenchido(viewModel: FormularioViewModel) {
