@@ -19,6 +19,7 @@
             type="android.view.View.OnClickListener" />
 
         <import type="android.view.View" />
+        <import type="android.widget.LinearLayout.LayoutParams" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -68,6 +69,7 @@
                         android:id="@+id/fragment_formulario_descricao_texto"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        layout_height="@{nota.marcador == null ? LayoutParams.MATCH_PARENT : LayoutParams.WRAP_CONTENT}"
                         android:layout_marginStart="@dimen/formulario_item_margin"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="@dimen/formulario_item_margin"
