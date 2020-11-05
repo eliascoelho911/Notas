@@ -24,24 +24,10 @@ class AtualizadorDeListaNotasAdapterTest {
         val notasNovas = listOf(NOTA_1, NOTA_0)
         doNothing().`when`(atualizador).notificarAdapterItemInserido(any())
         atualizador.atualiza(notasAntigas, notasNovas)
-        verify(atualizador, never()).notaAlterada(notasAntigas, notasNovas)
         verify(atualizador, never()).notaRemovida(notasAntigas, notasNovas)
         verify(atualizador, never()).notificarAlteracaoNaLista()
         verify(atualizador).notaAdicionada(notasAntigas, notasNovas)
         assertEquals(atualizador.notaAdicionada(notasAntigas, notasNovas), true)
-    }
-
-    @Test
-    fun deve_AtualizarItemDaLista_QuandoAlteradoUmItem() {
-        val notasAntigas = listOf(NOTA_0)
-        val notasNovas = listOf(NotaCompleta(Nota(id = 0, titulo = "1", descricao = "1", cor = 1)))
-        doNothing().`when`(atualizador).notificarAdapterItemAlterado(any())
-        atualizador.atualiza(notasAntigas, notasNovas)
-        verify(atualizador, never()).notaAdicionada(notasAntigas, notasNovas)
-        verify(atualizador, never()).notaRemovida(notasAntigas, notasNovas)
-        verify(atualizador, never()).notificarAlteracaoNaLista()
-        verify(atualizador).notaAlterada(notasAntigas, notasNovas)
-        assertEquals(atualizador.notaAlterada(notasAntigas, notasNovas), true)
     }
 
     @Test
@@ -51,20 +37,18 @@ class AtualizadorDeListaNotasAdapterTest {
         doNothing().`when`(atualizador).notificarAdapterItemRemovido(any())
         atualizador.atualiza(notasAntigas, notasNovas)
         verify(atualizador, never()).notaAdicionada(notasAntigas, notasNovas)
-        verify(atualizador, never()).notaAlterada(notasAntigas, notasNovas)
         verify(atualizador, never()).notificarAlteracaoNaLista()
         verify(atualizador).notaRemovida(notasAntigas, notasNovas)
         assertEquals(atualizador.notaRemovida(notasAntigas, notasNovas), true)
     }
 
     @Test
-    fun deve_AtualizarTodaLista_QuandoAlteradoVariosItensDaLista() {
+    fun deve_AtualizarTodaLista_QuandoAlteradoUmOuVariosItensDaLista() {
         val notasAntigas = listOf(NOTA_0)
         val notasNovas = listOf(NOTA_0, NOTA_1, NOTA_2)
         doNothing().`when`(atualizador).notificarAlteracaoNaLista()
         atualizador.atualiza(notasAntigas, notasNovas)
         verify(atualizador, never()).notaAdicionada(notasAntigas, notasNovas)
-        verify(atualizador, never()).notaAlterada(notasAntigas, notasNovas)
         verify(atualizador, never()).notaRemovida(notasAntigas, notasNovas)
         verify(atualizador).notificarAlteracaoNaLista()
     }
