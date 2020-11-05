@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -16,6 +17,8 @@
         <variable
             name="aoClicarNoBotaoOpcoes"
             type="android.view.View.OnClickListener" />
+
+        <import type="android.view.View" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -80,18 +83,15 @@
                         android:textColorHint="@color/primary_text_color_hint"
                         android:textSize="16sp" />
 
-                    <TextView
-                        android:id="@+id/fragment_formulario_marcador"
+                    <include
+                        android:id="@+id/fragment_formulario_menu_marcador"
+                        layout="@layout/text_view_marcador"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/background_marcador"
-                        android:paddingHorizontal="16dp"
-                        android:paddingVertical="8dp"
-                        android:layout_marginStart="@dimen/formulario_item_margin"
                         android:layout_marginBottom="@dimen/formulario_item_margin"
-                        android:textAppearance="@style/AppTheme.TextAppearance.Body2"
-                        tools:text="Projetos" />
-
+                        android:visibility="@{nota.marcador == null ? View.GONE : View.VISIBLE}"
+                        android:layout_marginStart="@dimen/formulario_item_margin"
+                        bind:marcador="@{nota.marcador.nome}" />
                 </LinearLayout>
             </ScrollView>
 

@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import br.com.eliascoelho911.notas.databinding.FragmentFormularioBinding
 import br.com.eliascoelho911.notas.model.Nota
+import br.com.eliascoelho911.notas.model.NotaCompleta
 import br.com.eliascoelho911.notas.ui.main.MainViewModel
 import kotlinx.android.synthetic.main.fragment_formulario.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -97,7 +98,7 @@ open class FormularioFragment : Fragment() {
     }
 
     private fun criaNotaData() {
-        val notaData = args.nota?.run { NotaData(this) } ?: NotaData(Nota())
+        val notaData = args.nota?.run { NotaData(this) } ?: NotaData(NotaCompleta())
         viewModel.notaData = notaData
     }
 

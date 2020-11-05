@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="marcador"
+            type="String" />
+    </data>
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_marcador"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="4dp"
+        android:text="@{marcador}"
+        android:textAppearance="@style/AppTheme.TextAppearance.Body2"
+        android:textSize="12sp"
+        tools:text="@tools:sample/lorem" />
+</layout>

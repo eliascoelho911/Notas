@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
-            name="nota"
-            type="br.com.eliascoelho911.notas.model.Nota" />
+            name="notaCompleta"
+            type="br.com.eliascoelho911.notas.model.NotaCompleta" />
 
         <variable
             name="onClick"
             type="android.view.View.OnClickListener" />
+
+        <import type="android.view.View" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_horizontal"
-        android:layout_marginTop="@dimen/margin_horizontal"
+        android:layout_marginStart="@dimen/margin_default"
+        android:layout_marginTop="@dimen/margin_default"
         android:onClick="@{onClick}"
         app:cardElevation="0dp"
         android:theme="@style/Theme.MaterialComponents.Light"
-        app:cardBackgroundColor="@{nota.cor, default=@color/background_tela}"
+        app:cardBackgroundColor="@{notaCompleta.nota.cor, default=@color/background_tela}"
         app:cardCornerRadius="16dp"
         app:strokeColor="@color/cinza"
         app:strokeWidth="1dp"
@@ -36,8 +39,8 @@
                 android:id="@+id/item_nota_titulo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/padding_item_nota"
-                android:text="@{nota.titulo}"
+                android:layout_margin="@dimen/margin_item_nota"
+                android:text="@{notaCompleta.nota.titulo}"
                 android:textColor="@color/primary_text_color"
                 android:textAppearance="@style/AppTheme.TextAppearance.Title"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -50,15 +53,26 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="@dimen/padding_item_nota"
+                android:layout_marginBottom="8dp"
                 android:textColor="@color/primary_text_color"
-                android:text="@{nota.descricao}"
+                android:text="@{notaCompleta.nota.descricao}"
                 android:textAppearance="@style/AppTheme.TextAppearance.Body1"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/item_nota_titulo"
                 app:layout_constraintStart_toStartOf="@id/item_nota_titulo"
                 app:layout_constraintTop_toBottomOf="@id/item_nota_titulo"
+                app:layout_constraintBottom_toTopOf="@id/item_nota_marcador"
                 tools:text="@tools:sample/lorem" />
+
+            <include
+                android:id="@+id/item_nota_marcador"
+                layout="@layout/text_view_marcador"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_item_nota"
+                android:visibility="@{notaCompleta.marcador == null ? View.GONE : View.VISIBLE, default=gone}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/item_nota_titulo"
+                bind:marcador="@{notaCompleta.marcador.nome}" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </layout>

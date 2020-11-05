@@ -3,18 +3,22 @@ package br.com.eliascoelho911.notas.ui.formulario
 import androidx.lifecycle.MutableLiveData
 import br.com.eliascoelho911.notas.model.Marcador
 import br.com.eliascoelho911.notas.model.Nota
+import br.com.eliascoelho911.notas.model.NotaCompleta
 
 class NotaData(
-    nota: Nota,
+    notaCompleta: NotaCompleta,
 ) {
-    val titulo: MutableLiveData<String> = MutableLiveData(nota.titulo)
-    val descricao: MutableLiveData<String?> = MutableLiveData(nota.descricao)
-    val cor: MutableLiveData<Int> = MutableLiveData(nota.cor)
-    val id = nota.id
-    val marcador: MutableLiveData<Marcador?> = MutableLiveData(null)
+    val titulo: MutableLiveData<String> = MutableLiveData(notaCompleta.nota.titulo)
+    val descricao: MutableLiveData<String?> = MutableLiveData(notaCompleta.nota.descricao)
+    val cor: MutableLiveData<Int> = MutableLiveData(notaCompleta.nota.cor)
+    val id = notaCompleta.nota.id
+    val marcador: MutableLiveData<Marcador?> = MutableLiveData(notaCompleta.marcador)
 
-    fun paraNota() = Nota(id = id,
+    fun paraNota() = Nota(
+        id = id,
         titulo = titulo.value!!,
         descricao = descricao.value ?: "",
-        cor = cor.value!!)
+        cor = cor.value!!,
+        idMarcador = marcador.value?.id
+    )
 }

@@ -23,7 +23,7 @@
                 android:id="@+id/fragment_notas_lista_de_notas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/margin_horizontal"
+                android:layout_marginEnd="@dimen/margin_default"
                 android:layout_marginBottom="72dp"
                 tools:itemCount="7"
                 tools:listitem="@layout/item_nota" />

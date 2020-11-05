@@ -8,15 +8,14 @@ import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import br.com.eliascoelho911.notas.databinding.ItemNotaBinding
-import br.com.eliascoelho911.notas.model.Nota
+import br.com.eliascoelho911.notas.model.NotaCompleta
 import br.com.eliascoelho911.notas.ui.recyclerview.adapter.ListaNotasAdapter.NotaViewHolder
 import org.koin.java.KoinJavaComponent.inject
 
 class ListaNotasAdapter(
-    private var notas: List<Nota> = listOf(),
-    private val onClickItem: (nota: Nota) -> Unit,
-) :
-    ListAdapter<Nota, NotaViewHolder>(DiffUtil) {
+    private var notas: List<NotaCompleta> = listOf(),
+    private val onClickItem: (nota: NotaCompleta) -> Unit,
+) : ListAdapter<NotaCompleta, NotaViewHolder>(DiffUtil) {
 
     private val context: Context by inject(Context::class.java)
 
@@ -30,7 +29,7 @@ class ListaNotasAdapter(
         holder.vincula(notas[position])
     }
 
-    fun atualiza(notas: List<Nota>) {
+    fun atualiza(notas: List<NotaCompleta>) {
         if (this.notas == notas)
             return
         this.notas = notas
@@ -40,16 +39,19 @@ class ListaNotasAdapter(
     override fun getItemCount() = notas.size
 
     inner class NotaViewHolder(private val binding: ItemNotaBinding) : ViewHolder(binding.root) {
-        fun vincula(nota: Nota) {
-            binding.nota = nota
+        fun vincula(nota: NotaCompleta) {
+            binding.notaCompleta = nota
             binding.onClick = View.OnClickListener {
                 onClickItem(nota)
             }
         }
     }
 
-    private object DiffUtil : ItemCallback<Nota>() {
-        override fun areItemsTheSame(oldItem: Nota, newItem: Nota) = oldItem == newItem
-        override fun areContentsTheSame(oldItem: Nota, newItem: Nota) = oldItem == newItem
+    private object DiffUtil : ItemCallback<NotaCompleta>() {
+        override fun areItemsTheSame(oldItem: NotaCompleta, newItem: NotaCompleta) =
+            oldItem == newItem
+
+        override fun areContentsTheSame(oldItem: NotaCompleta, newItem: NotaCompleta) =
+            oldItem == newItem
     }
 }

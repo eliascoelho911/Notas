@@ -10,7 +10,7 @@ import org.koin.java.KoinJavaComponent.inject
 class NotaCompletaRepository {
     private val dao: NotaCompletaDao by inject(NotaCompletaDao::class.java)
 
-    suspend fun todos(): LiveData<List<NotaCompleta>> {
+    suspend fun todas(): LiveData<List<NotaCompleta>> {
         return withContext(IO) {
             dao.todos()
         }

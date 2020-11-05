@@ -22,7 +22,7 @@
         <argument
             android:name="nota"
             android:defaultValue="@null"
-            app:argType="br.com.eliascoelho911.notas.model.Nota"
+            app:argType="br.com.eliascoelho911.notas.model.NotaCompleta"
             app:nullable="true" />
     </fragment>
 
