@@ -83,8 +83,9 @@
                     android:importantForAutofill="no"
                     android:inputType="text"
                     android:maxLines="1"
+                    android:text="@={propriedadesToolbar.toolbarEditText.text}"
                     android:textAppearance="@style/AppTheme.TextAppearance.Body2"
-                    android:visibility="@{propriedadesToolbar.toolbarEditText == null ? View.GONE : View.VISIBLE}"
+                    android:visibility="@{propriedadesToolbar.toolbarEditText.visibilidade}"
                     tools:hint="Digite algo" />
             </androidx.appcompat.widget.Toolbar>
 

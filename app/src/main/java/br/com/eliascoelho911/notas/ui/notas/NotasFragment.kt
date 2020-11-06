@@ -37,7 +37,7 @@ class NotasFragment : Fragment() {
             navController.navigate(navNotasParaNavFormulario)
         }
         mainViewModel.propriedadesBottomAppBar.alteraVisibilidade(VISIBLE)
-        mainViewModel.propriedadesToolbar.configura(escondeAoMoverScroll = true)
+        mainViewModel.propriedadesToolbar.esconderAoMoverScroll(b = true)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

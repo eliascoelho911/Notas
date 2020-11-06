@@ -13,7 +13,7 @@ import org.koin.java.KoinJavaComponent.inject
 
 class MarcadoresAdapter(
     private val marcadores: List<Marcador> = listOf(),
-    private val onClick: (Marcador) -> Unit = {},
+    var onClick: (Marcador) -> Unit = {},
 ) : ListAdapter<Marcador, MarcadorViewHolder>(DiffUtil()) {
     private val context by inject(Context::class.java)
 

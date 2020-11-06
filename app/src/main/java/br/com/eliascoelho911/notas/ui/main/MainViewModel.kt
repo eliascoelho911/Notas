@@ -5,7 +5,8 @@ import androidx.lifecycle.ViewModel
 
 class MainViewModel : ViewModel() {
     fun configuracaoPadrao() {
-        propriedadesToolbar.configura(escondeAoMoverScroll = false)
+        propriedadesToolbar.esconderAoMoverScroll(b = false)
+        propriedadesToolbar.toolbarEditText.altera()
         propriedadesBottomAppBar.alteraVisibilidade(View.GONE)
         propriedadesFab.configura(visivel = View.GONE)
     }
