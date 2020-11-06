@@ -1,22 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:openDrawer="start">
+<layout>
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
+    <data>
+
+        <variable
+            name="propriedadesBottomAppBar"
+            type="br.com.eliascoelho911.notas.ui.main.PropriedadesBottomAppBar" />
+
+        <variable
+            name="propriedadesFab"
+            type="br.com.eliascoelho911.notas.ui.main.PropriedadesFab" />
+
+        <variable
+            name="propriedadesToolbar"
+            type="br.com.eliascoelho911.notas.ui.main.PropriedadesToolbar" />
+    </data>
+
+    <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        style="@style/AppTheme.ItemDrawer"
-        android:background="@color/colorPrimary"
-        android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:menu="@menu/activity_main_drawer"/>
+        tools:openDrawer="start">
 
-    <include layout="@layout/content_main" />
-</androidx.drawerlayout.widget.DrawerLayout>
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
+            style="@style/AppTheme.ItemDrawer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@color/colorPrimary"
+            android:fitsSystemWindows="true"
+            app:menu="@menu/activity_main_drawer" />
+
+        <include
+            layout="@layout/content_main"
+            bind:propriedadesBottomAppBar="@{propriedadesBottomAppBar}"
+            bind:propriedadesFab="@{propriedadesFab}"
+            bind:propriedadesToolbar="@{propriedadesToolbar}" />
+    </androidx.drawerlayout.widget.DrawerLayout>
+</layout>

@@ -3,6 +3,7 @@ package br.com.eliascoelho911.notas.ui.notas
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -31,27 +32,18 @@ class NotasFragment : Fragment() {
     }
 
     private fun configuraMainViewModel() {
-        mainViewModel.configurarLayout(fabVisivel = true,
-            bottomAppBarVisivel = true,
-            hideOnScroll = true)
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        configuraCliqueFab()
+        mainViewModel.propriedadesFab.configura(visivel = VISIBLE) {
+            val navNotasParaNavFormulario = NotasFragmentDirections.navNotasParaNavFormulario()
+            navController.navigate(navNotasParaNavFormulario)
+        }
+        mainViewModel.propriedadesBottomAppBar.alteraVisibilidade(VISIBLE)
+        mainViewModel.propriedadesToolbar.configura(escondeAoMoverScroll = true)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         criaListaDeNotas()
         buscaNotas()
-    }
-
-    private fun configuraCliqueFab() {
-        mainViewModel.modificadorDeFab.setOnClickListener {
-            val navNotasParaNavFormulario = NotasFragmentDirections.navNotasParaNavFormulario()
-            navController.navigate(navNotasParaNavFormulario)
-        }
     }
 
     private fun criaListaDeNotas() {

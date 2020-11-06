@@ -1,15 +1,18 @@
 package br.com.eliascoelho911.notas.ui.main
 
+import android.view.View
 import androidx.lifecycle.ViewModel
 
 class MainViewModel : ViewModel() {
-    lateinit var modificadorDeFab: ModificadorDeFab
-    lateinit var modificadorDeBottomAppBar: ModificadorDeBottomAppBar
-    lateinit var modificadorDeToolbar: ModificadorDeToolbar
-
-    fun configurarLayout(fabVisivel: Boolean, bottomAppBarVisivel: Boolean, hideOnScroll: Boolean) {
-        modificadorDeFab.setVisibility(fabVisivel)
-        modificadorDeBottomAppBar.setVisibility(bottomAppBarVisivel)
-        modificadorDeToolbar.hideOnScroll(hideOnScroll)
+    fun configuracaoPadrao() {
+        propriedadesToolbar.configura(escondeAoMoverScroll = false)
+        propriedadesBottomAppBar.alteraVisibilidade(View.GONE)
+        propriedadesFab.configura(visivel = View.GONE)
     }
+
+    val propriedadesToolbar = PropriedadesToolbar()
+    val propriedadesBottomAppBar = PropriedadesBottomAppBar()
+    val propriedadesFab = PropriedadesFab()
 }
+
+

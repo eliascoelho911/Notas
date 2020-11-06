@@ -2,6 +2,7 @@ package br.com.eliascoelho911.notas.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil.setContentView
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -9,6 +10,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import br.com.eliascoelho911.notas.R
+import br.com.eliascoelho911.notas.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -22,12 +24,21 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        configuraBinding()
         configuraViewModel()
         configuraNavView()
         configuraToolbar()
         configuraBottomAppBar()
         bottomAppBarSemNavigationIcon()
+    }
+
+    private fun configuraBinding() {
+        setContentView<ActivityMainBinding>(this, R.layout.activity_main).apply {
+            lifecycleOwner = this@MainActivity
+            propriedadesBottomAppBar = viewModel.propriedadesBottomAppBar
+            propriedadesFab = viewModel.propriedadesFab
+            propriedadesToolbar = viewModel.propriedadesToolbar
+        }
     }
 
     private fun bottomAppBarSemNavigationIcon() {
@@ -38,9 +49,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun configuraViewModel() {
         appBarConfiguration = AppBarConfiguration(setOf(R.id.nav_notas), drawer_layout)
-        viewModel.modificadorDeFab = ModificadorDeFab(fab)
-        viewModel.modificadorDeBottomAppBar = ModificadorDeBottomAppBar(bottomappbar)
-        viewModel.modificadorDeToolbar = ModificadorDeToolbar(toolbar)
     }
 
     private fun configuraToolbar() {

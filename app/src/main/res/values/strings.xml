@@ -22,4 +22,5 @@
     <string name="adicionar">Adicionar</string>
     <string name="marcador">Marcador</string>
     <string name="confirmar">Confirmar</string>
+    <string name="digite_o_nome_do_marcador">Digite o nome do marcador</string>
 </resources>

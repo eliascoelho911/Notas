@@ -33,8 +33,8 @@ open class FormularioFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        configuraMainViewModel()
         criaNotaData()
+        mainViewModel.configuracaoPadrao()
         setHasOptionsMenu(true)
         return getBinding(container).root
     }
@@ -84,12 +84,6 @@ open class FormularioFragment : Fragment() {
         fragmentManager: FragmentManager,
     ) {
         bottomSheetOpcoes.show(fragmentManager, null)
-    }
-
-    private fun configuraMainViewModel() {
-        mainViewModel.configurarLayout(fabVisivel = false,
-            bottomAppBarVisivel = false,
-            hideOnScroll = false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
