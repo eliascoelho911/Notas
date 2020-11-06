@@ -24,6 +24,23 @@
             android:defaultValue="@null"
             app:argType="br.com.eliascoelho911.notas.model.NotaCompleta"
             app:nullable="true" />
+        <action
+            android:id="@+id/nav_formulario_para_nav_marcadores"
+            app:destination="@id/nav_marcadores" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_marcadores"
+        android:name="br.com.eliascoelho911.notas.ui.marcadores.MarcadoresFragment"
+        android:label="@string/marcadores"
+        tools:layout="@layout/fragment_marcadores">
+        <argument
+            android:name="nota"
+            app:argType="br.com.eliascoelho911.notas.model.NotaCompleta" />
+        <action
+            android:id="@+id/nav_marcadores_para_nav_formulario"
+            app:destination="@id/nav_formulario"
+            app:popUpTo="@id/nav_formulario"
+            app:popUpToInclusive="true" />
     </fragment>
 
 </navigation>

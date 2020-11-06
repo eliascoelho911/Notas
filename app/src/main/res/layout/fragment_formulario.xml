@@ -90,9 +90,9 @@
                         layout="@layout/text_view_marcador"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/formulario_item_margin"
                         android:layout_marginBottom="@dimen/formulario_item_margin"
                         android:visibility="@{nota.marcador == null ? View.GONE : View.VISIBLE}"
-                        android:layout_marginStart="@dimen/formulario_item_margin"
                         bind:marcador="@{nota.marcador.nome}" />
                 </LinearLayout>
             </ScrollView>

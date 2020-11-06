@@ -123,7 +123,7 @@ open class FormularioFragment : Fragment() {
     }
 
     open fun criaNota(): Nota {
-        return viewModel.notaData.paraNota()
+        return viewModel.notaData.paraNotaCompleta().nota
     }
 
 }

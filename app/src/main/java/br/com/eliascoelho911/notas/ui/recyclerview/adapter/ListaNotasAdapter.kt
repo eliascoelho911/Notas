@@ -49,7 +49,7 @@ open class ListaNotasAdapter(
         }
     }
 
-    class DiffUtil : ItemCallback<NotaCompleta>() {
+    private class DiffUtil : ItemCallback<NotaCompleta>() {
         override fun areItemsTheSame(oldItem: NotaCompleta, newItem: NotaCompleta) =
             oldItem == newItem
 

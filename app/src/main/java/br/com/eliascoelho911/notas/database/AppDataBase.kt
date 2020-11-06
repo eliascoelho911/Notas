@@ -4,6 +4,7 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import br.com.eliascoelho911.notas.database.converter.ListStringConverter
+import br.com.eliascoelho911.notas.database.dao.MarcadorDao
 import br.com.eliascoelho911.notas.database.dao.NotaCompletaDao
 import br.com.eliascoelho911.notas.database.dao.NotaDao
 import br.com.eliascoelho911.notas.model.Marcador
@@ -14,4 +15,5 @@ import br.com.eliascoelho911.notas.model.Nota
 abstract class AppDataBase : RoomDatabase() {
     abstract fun getNotaDao(): NotaDao
     abstract fun getNotaCompletaDao(): NotaCompletaDao
+    abstract fun getMarcadorDao(): MarcadorDao
 }

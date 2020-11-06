@@ -49,8 +49,4 @@ open class AtualizadorDeListaNotasAdapter(
         adapter.notifyItemRemoved(position)
     }
 
-    open fun notificarAdapterItemAlterado(position: Int) {
-        adapter.notifyItemChanged(position)
-    }
-
 }

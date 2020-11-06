@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
+import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import br.com.eliascoelho911.notas.R
@@ -19,6 +20,9 @@ open class BottomSheetOpcoes(
     private val notaData: NotaData,
 ) : BottomSheetDialogFragment() {
     private val formularioViewModel: FormularioViewModel by sharedViewModel()
+    private val navController: NavController by lazy {
+        findNavController()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,10 +43,15 @@ open class BottomSheetOpcoes(
 
     private fun opcoes() =
         listOf(ItemMenu(getString(R.string.excluir), R.drawable.ic_delete) {
-            formularioViewModel.deleta(notaData.paraNota())
+            formularioViewModel.deleta(notaData.paraNotaCompleta().nota)
             dismiss()
-            findNavController().popBackStack()
-        }, ItemMenu(getString(R.string.marcadores), R.drawable.ic_label))
+            navController.popBackStack()
+        }, ItemMenu(getString(R.string.marcadores), R.drawable.ic_label) {
+            dismiss()
+            val navFormularioParaNavMarcadores =
+                FormularioFragmentDirections.navFormularioParaNavMarcadores(notaData.paraNotaCompleta())
+            navController.navigate(navFormularioParaNavMarcadores)
+        })
 
     private fun cores() = listOf(getColor(R.color.background_tela),
         getColor(R.color.azul),

@@ -14,11 +14,13 @@ class NotaData(
     val id = notaCompleta.nota.id
     val marcador: MutableLiveData<Marcador?> = MutableLiveData(notaCompleta.marcador)
 
-    fun paraNota() = Nota(
-        id = id,
-        titulo = titulo.value!!,
-        descricao = descricao.value ?: "",
-        cor = cor.value!!,
-        idMarcador = marcador.value?.id
-    )
+    fun paraNotaCompleta() = NotaCompleta(
+        Nota(
+            id = id,
+            titulo = titulo.value!!,
+            descricao = descricao.value ?: "",
+            cor = cor.value!!,
+            idMarcador = marcador.value?.id
+        ),
+        marcador.value)
 }

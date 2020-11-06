@@ -12,7 +12,6 @@
     <string name="imagem">Imagem</string>
     <string name="refazer">Refazer</string>
     <string name="mais_opcoes">Mais opções</string>
-    <string name="adicionar">Adicionar</string>
     <string name="desfazer">Desfazer</string>
     <string name="tirar_foto">Tirar foto</string>
     <string name="adicionar_imagem">Adicionar imagem</string>
@@ -20,4 +19,7 @@
     <string name="cor">Cor</string>
     <string name="excluir">Excluir</string>
     <string name="marcadores">Marcadores</string>
+    <string name="adicionar">Adicionar</string>
+    <string name="marcador">Marcador</string>
+    <string name="confirmar">Confirmar</string>
 </resources>

@@ -4,5 +4,7 @@
     <dimen name="margin_item_nota">@dimen/margin_default</dimen>
     <dimen name="formulario_item_margin">@dimen/margin_default</dimen>
     <dimen name="margin_fragment_formulario_menu">@dimen/margin_default</dimen>
+    <dimen name="margin_item_marcador">@dimen/margin_default</dimen>
     <dimen name="stroke_item_nota">0.6dp</dimen>
+    <dimen name="drawable_padding_menu">32dp</dimen>
 </resources>
