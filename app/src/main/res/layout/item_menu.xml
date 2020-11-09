@@ -6,7 +6,7 @@
 
         <variable
             name="item"
-            type="br.com.eliascoelho911.notas.model.ItemMenu" />
+            type="br.com.eliascoelho911.notas.ui.ItemMenu" />
     </data>
 
     <TextView

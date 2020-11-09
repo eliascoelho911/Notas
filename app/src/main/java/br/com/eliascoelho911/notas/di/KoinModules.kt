@@ -11,13 +11,12 @@ import br.com.eliascoelho911.notas.database.repository.NotaRepository
 import br.com.eliascoelho911.notas.ui.formulario.FormularioViewModel
 import br.com.eliascoelho911.notas.ui.main.MainViewModel
 import br.com.eliascoelho911.notas.ui.marcadores.MarcadoresViewModel
-import br.com.eliascoelho911.notas.ui.notas.ManipuladorDeListaDeNotas
 import br.com.eliascoelho911.notas.ui.notas.NotasViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
+
 val othersModules = module {
-    single { ManipuladorDeListaDeNotas() }
 }
 
 val dbModule = module {

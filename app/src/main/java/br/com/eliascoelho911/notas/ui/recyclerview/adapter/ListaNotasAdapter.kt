@@ -13,12 +13,10 @@ import br.com.eliascoelho911.notas.ui.recyclerview.adapter.ListaNotasAdapter.Not
 import org.koin.java.KoinJavaComponent.inject
 
 open class ListaNotasAdapter(
-    private var notas: List<NotaCompleta> = listOf(),
     private val onClickItem: (nota: NotaCompleta) -> Unit = {},
 ) : ListAdapter<NotaCompleta, NotaViewHolder>(DiffUtil()) {
 
     private val context: Context by inject(Context::class.java)
-    private val atualizador = AtualizadorDeListaNotasAdapter(this)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotaViewHolder {
         val inflater = LayoutInflater.from(context)
@@ -27,18 +25,8 @@ open class ListaNotasAdapter(
     }
 
     override fun onBindViewHolder(holder: NotaViewHolder, position: Int) {
-        holder.vincula(notas[position])
+        holder.vincula(getItem(position))
     }
-
-    fun atualiza(notasNovas: List<NotaCompleta>) {
-        if (this.notas == notasNovas)
-            return
-        val notasAntigas = this.notas
-        this.notas = notasNovas
-        atualizador.atualiza(notasAntigas, notasNovas)
-    }
-
-    override fun getItemCount() = notas.size
 
     inner class NotaViewHolder(private val binding: ItemNotaBinding) : ViewHolder(binding.root) {
         fun vincula(nota: NotaCompleta) {
@@ -51,7 +39,7 @@ open class ListaNotasAdapter(
 
     private class DiffUtil : ItemCallback<NotaCompleta>() {
         override fun areItemsTheSame(oldItem: NotaCompleta, newItem: NotaCompleta) =
-            oldItem == newItem
+            oldItem.nota.id == newItem.nota.id
 
         override fun areContentsTheSame(oldItem: NotaCompleta, newItem: NotaCompleta) =
             oldItem == newItem

@@ -8,7 +8,7 @@ class MainViewModel : ViewModel() {
         propriedadesToolbar.esconderAoMoverScroll(b = false)
         propriedadesToolbar.toolbarEditText.altera()
         propriedadesBottomAppBar.alteraVisibilidade(View.GONE)
-        propriedadesFab.configura(visivel = View.GONE)
+        propriedadesFab.configura(visivel = false)
     }
 
     val propriedadesToolbar = PropriedadesToolbar()

@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.ListView
 import androidx.core.content.ContextCompat
 import br.com.eliascoelho911.notas.R
-import br.com.eliascoelho911.notas.model.ItemMenu
+import br.com.eliascoelho911.notas.ui.ItemMenu
 import br.com.eliascoelho911.notas.ui.listview.adapter.ItemMenuAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 

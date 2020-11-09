@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import br.com.eliascoelho911.notas.databinding.ItemMenuBinding
-import br.com.eliascoelho911.notas.model.ItemMenu
+import br.com.eliascoelho911.notas.ui.ItemMenu
 import org.koin.java.KoinJavaComponent.inject
 
 class ItemMenuAdapter(

@@ -9,7 +9,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import br.com.eliascoelho911.notas.R
-import br.com.eliascoelho911.notas.model.ItemMenu
+import br.com.eliascoelho911.notas.ui.ItemMenu
 import br.com.eliascoelho911.notas.ui.listview.adapter.ItemMenuAdapter
 import br.com.eliascoelho911.notas.ui.recyclerview.adapter.CoresAdapter
 import br.com.eliascoelho911.notas.ui.util.getColor

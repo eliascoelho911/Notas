@@ -1,4 +1,4 @@
-package br.com.eliascoelho911.notas.model
+package br.com.eliascoelho911.notas.ui
 
 import android.graphics.drawable.Drawable
 import android.view.View

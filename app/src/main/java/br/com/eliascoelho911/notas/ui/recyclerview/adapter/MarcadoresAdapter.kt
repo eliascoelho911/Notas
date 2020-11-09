@@ -12,10 +12,10 @@ import br.com.eliascoelho911.notas.ui.recyclerview.adapter.MarcadoresAdapter.Mar
 import org.koin.java.KoinJavaComponent.inject
 
 class MarcadoresAdapter(
-    private val marcadores: List<Marcador> = listOf(),
     var onClick: (Marcador) -> Unit = {},
 ) : ListAdapter<Marcador, MarcadorViewHolder>(DiffUtil()) {
     private val context by inject(Context::class.java)
+    private lateinit var listaSemFiltro: List<Marcador>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MarcadorViewHolder {
         val inflater = LayoutInflater.from(context)
@@ -24,10 +24,23 @@ class MarcadoresAdapter(
     }
 
     override fun onBindViewHolder(holder: MarcadorViewHolder, position: Int) {
-        holder.vincula(marcadores[position])
+        holder.vincula(getItem(position))
     }
 
-    override fun getItemCount() = marcadores.size
+    fun atualiza(list: List<Marcador>) {
+        listaSemFiltro = list
+        submitList(list)
+    }
+
+    fun filtra(s: String) {
+        if (::listaSemFiltro.isInitialized)
+            submitList(listaSemFiltro.filter { it.nome.contains(s, true) })
+    }
+
+    fun limpaFiltro() {
+        if (::listaSemFiltro.isInitialized)
+            submitList(listaSemFiltro)
+    }
 
     inner class MarcadorViewHolder(private val binding: ItemMarcadorBinding) :
         RecyclerView.ViewHolder(binding.root) {

@@ -7,19 +7,26 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import br.com.eliascoelho911.notas.R
 import br.com.eliascoelho911.notas.ui.main.MainViewModel
+import br.com.eliascoelho911.notas.ui.recyclerview.adapter.ListaNotasAdapter
 import kotlinx.android.synthetic.main.fragment_notas.*
-import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NotasFragment : Fragment() {
     private val viewModel: NotasViewModel by viewModel()
     private val mainViewModel: MainViewModel by sharedViewModel()
-    private val manipuladorDeListaDeNotas: ManipuladorDeListaDeNotas by inject()
     private val navController by lazy {
         findNavController()
+    }
+    private val listaNotasAdapter: ListaNotasAdapter by lazy {
+        ListaNotasAdapter { nota ->
+            val navNotasParaNavFormulario = NotasFragmentDirections.navNotasParaNavFormulario(nota)
+            navController.navigate(navNotasParaNavFormulario)
+
+        }
     }
 
     override fun onCreateView(
@@ -32,7 +39,7 @@ class NotasFragment : Fragment() {
     }
 
     private fun configuraMainViewModel() {
-        mainViewModel.propriedadesFab.configura(visivel = VISIBLE) {
+        mainViewModel.propriedadesFab.configura(true) {
             val navNotasParaNavFormulario = NotasFragmentDirections.navNotasParaNavFormulario()
             navController.navigate(navNotasParaNavFormulario)
         }
@@ -47,16 +54,15 @@ class NotasFragment : Fragment() {
     }
 
     private fun criaListaDeNotas() {
-        manipuladorDeListaDeNotas.criaLista(fragment_notas_lista_de_notas) { nota ->
-            val navNotasParaNavFormulario = NotasFragmentDirections.navNotasParaNavFormulario(nota)
-            navController.navigate(navNotasParaNavFormulario)
-        }
+        val layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        fragment_notas_lista_de_notas.layoutManager = layoutManager
+        fragment_notas_lista_de_notas.adapter = listaNotasAdapter
     }
 
     private fun buscaNotas() {
         viewModel.todas { livedata ->
             livedata.observe(viewLifecycleOwner, { notas ->
-                manipuladorDeListaDeNotas.atualizaLista(fragment_notas_lista_de_notas, notas)
+                listaNotasAdapter.submitList(notas)
             })
         }
     }

@@ -57,12 +57,9 @@
                 android:layout_marginEnd="@dimen/margin_item_marcador"
                 android:contentDescription="@string/confirmar"
                 android:src="@drawable/ic_check"
-                android:tint="@color/colorAccent"
                 app:layout_constraintBottom_toBottomOf="@id/item_marcador_icone"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/item_marcador_icone"
-                tools:ignore="UseAppTint"
-                tools:tint="@color/colorAccent" />
+                app:layout_constraintTop_toTopOf="@id/item_marcador_icone" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </layout>

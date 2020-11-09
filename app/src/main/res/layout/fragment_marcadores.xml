@@ -1,18 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/background_tela"
-    android:orientation="vertical">
+<layout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/fragment_marcadores_lista"
+    <data>
+
+        <variable
+            name="editTextToolbar"
+            type="androidx.lifecycle.LiveData&lt;String>" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:itemCount="6"
-        tools:listitem="@layout/item_marcador" />
+        android:layout_height="match_parent"
+        android:background="@color/background_tela"
+        android:orientation="vertical">
 
-</LinearLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            changeVisibilityWithFade="@{editTextToolbar.length() != 0}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background_tela"
+            android:foreground="?android:selectableItemBackground">
+
+            <ImageView
+                android:id="@+id/fragment_marcadores_adicionar_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_item_marcador"
+                android:contentDescription="@string/adicionar"
+                android:src="@drawable/ic_add"
+                android:tint="@color/colorAccent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="UseAppTint" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/drawable_padding_menu"
+                android:layout_marginEnd="@dimen/margin_item_marcador"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{@string/criar + ` ` + editTextToolbar}"
+                android:textAppearance="@style/AppTheme.TextAppearance.Body2"
+                app:layout_constraintBottom_toBottomOf="@id/fragment_marcadores_adicionar_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/fragment_marcadores_adicionar_icon"
+                app:layout_constraintTop_toTopOf="@id/fragment_marcadores_adicionar_icon"
+                tools:text="Criar XYZ" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/fragment_marcadores_lista"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="6"
+            tools:listitem="@layout/item_marcador" />
+
+    </LinearLayout>
+</layout>

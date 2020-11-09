@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import br.com.eliascoelho911.notas.R
+import br.com.eliascoelho911.notas.databinding.FragmentMarcadoresBinding
 import br.com.eliascoelho911.notas.model.Marcador
 import br.com.eliascoelho911.notas.model.NotaCompleta
 import br.com.eliascoelho911.notas.ui.main.MainViewModel
@@ -16,11 +17,20 @@ import kotlinx.android.synthetic.main.fragment_marcadores.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+
 class MarcadoresFragment : Fragment() {
     private val viewModel: MarcadoresViewModel by viewModel()
     private val mainViewModel: MainViewModel by sharedViewModel()
     private val args: MarcadoresFragmentArgs by navArgs()
-    private val adapter = MarcadoresAdapter()
+    private val adapter by lazy {
+        MarcadoresAdapter { marcadorSelecionado ->
+            val notaCompleta =
+                criaNovaNotaCompletaComOMarcadorSelecionado(marcadorSelecionado)
+            val actionNavMarcadoresToNavFormulario =
+                MarcadoresFragmentDirections.navMarcadoresParaNavFormulario(notaCompleta)
+            findNavController().navigate(actionNavMarcadoresToNavFormulario)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,7 +38,17 @@ class MarcadoresFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         configuraMainViewModel()
-        return inflater.inflate(R.layout.fragment_marcadores, container, false)
+        return getBinding(inflater, container).root
+    }
+
+    private fun getBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+    ): FragmentMarcadoresBinding {
+        return FragmentMarcadoresBinding.inflate(inflater, container, false).apply {
+            lifecycleOwner = this@MarcadoresFragment.viewLifecycleOwner
+            editTextToolbar = mainViewModel.propriedadesToolbar.toolbarEditText.text
+        }
     }
 
     private fun configuraMainViewModel() {
@@ -38,7 +58,7 @@ class MarcadoresFragment : Fragment() {
 
     private fun modificaToolbar() {
         val propriedadesToolbar = mainViewModel.propriedadesToolbar
-        propriedadesToolbar.esconderAoMoverScroll(b = false)
+        propriedadesToolbar.esconderAoMoverScroll(false)
         val toolbarEditText = propriedadesToolbar.toolbarEditText
         toolbarEditText.altera(getString(R.string.digite_o_nome_do_marcador))
         toolbarEditText.limpaTexto()
@@ -47,27 +67,28 @@ class MarcadoresFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         buscaMarcadores()
+        colocaAdapterNaLista()
         mainViewModel.propriedadesToolbar.toolbarEditText.text.observe(viewLifecycleOwner) {
-
+            filtraLista(it)
         }
+    }
+
+    private fun filtraLista(it: String) {
+        if (it.isBlank())
+            adapter.limpaFiltro()
+        else
+            adapter.filtra(it)
+    }
+
+    private fun colocaAdapterNaLista() {
+        fragment_marcadores_lista.adapter = adapter
     }
 
     private fun buscaMarcadores() {
         viewModel.todos {
             it.observe(viewLifecycleOwner) { marcadores ->
-                fragment_marcadores_lista.adapter = adapter
-                atualizaAdapter(marcadores)
+                adapter.atualiza(marcadores)
             }
-        }
-    }
-
-    private fun atualizaAdapter(marcadores: List<Marcador>) {
-        adapter.onClick = { marcadorSelecionado ->
-            val notaCompleta =
-                criaNovaNotaCompletaComOMarcadorSelecionado(marcadorSelecionado)
-            val actionNavMarcadoresToNavFormulario =
-                MarcadoresFragmentDirections.navMarcadoresParaNavFormulario(notaCompleta)
-            findNavController().navigate(actionNavMarcadoresToNavFormulario)
         }
     }
 

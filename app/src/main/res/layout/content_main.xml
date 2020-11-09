@@ -55,7 +55,7 @@
             android:backgroundTint="@color/colorAccent"
             android:onClick="@{propriedadesFab.onClickListener}"
             android:src="@drawable/ic_add"
-            android:visibility="@{propriedadesFab.visibilidade}"
+            visivel="@{propriedadesFab.visibilidade}"
             app:borderWidth="0dp"
             app:layout_anchor="@id/bottomappbar"
             app:tint="@android:color/white" />
