@@ -7,6 +7,6 @@ import java.io.Serializable
 @Entity
 data class Marcador(
     @PrimaryKey(autoGenerate = true)
-    val id: Long,
-    val nome: String,
+    val id: Long = 0,
+    val nome: String = "",
 ) : Serializable

@@ -2,6 +2,7 @@ package br.com.eliascoelho911.notas.database.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Insert
 import androidx.room.Query
 import br.com.eliascoelho911.notas.model.Marcador
 
@@ -9,4 +10,7 @@ import br.com.eliascoelho911.notas.model.Marcador
 interface MarcadorDao {
     @Query("SELECT * FROM Marcador")
     fun todos(): LiveData<List<Marcador>>
+
+    @Insert
+    fun salva(marcador: Marcador): Long
 }

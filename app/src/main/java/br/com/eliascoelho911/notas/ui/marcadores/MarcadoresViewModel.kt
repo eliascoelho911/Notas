@@ -9,11 +9,17 @@ import kotlinx.coroutines.launch
 import org.koin.java.KoinJavaComponent.inject
 
 class MarcadoresViewModel : ViewModel() {
-    private val marcadorRepository by inject(MarcadorRepository::class.java)
+    private val repository by inject(MarcadorRepository::class.java)
 
     fun todos(quandoBuscar: (LiveData<List<Marcador>>) -> Unit) {
         viewModelScope.launch {
-            quandoBuscar(marcadorRepository.todos())
+            quandoBuscar(repository.todos())
+        }
+    }
+
+    fun salva(marcador: Marcador, quandoSalvar: (id: Long) -> Unit) {
+        viewModelScope.launch {
+            quandoSalvar(repository.salva(marcador))
         }
     }
 }

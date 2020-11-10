@@ -17,19 +17,22 @@ import kotlinx.android.synthetic.main.fragment_marcadores.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
 class MarcadoresFragment : Fragment() {
     private val viewModel: MarcadoresViewModel by viewModel()
     private val mainViewModel: MainViewModel by sharedViewModel()
     private val args: MarcadoresFragmentArgs by navArgs()
     private val adapter by lazy {
         MarcadoresAdapter { marcadorSelecionado ->
-            val notaCompleta =
-                criaNovaNotaCompletaComOMarcadorSelecionado(marcadorSelecionado)
-            val actionNavMarcadoresToNavFormulario =
-                MarcadoresFragmentDirections.navMarcadoresParaNavFormulario(notaCompleta)
-            findNavController().navigate(actionNavMarcadoresToNavFormulario)
+            vaiParaFormulario(marcadorSelecionado)
         }
+    }
+
+    private fun vaiParaFormulario(marcadorSelecionado: Marcador) {
+        val notaCompleta =
+            criaNovaNotaCompletaComOMarcadorSelecionado(marcadorSelecionado)
+        val actionNavMarcadoresToNavFormulario =
+            MarcadoresFragmentDirections.navMarcadoresParaNavFormulario(notaCompleta)
+        findNavController().navigate(actionNavMarcadoresToNavFormulario)
     }
 
     override fun onCreateView(
@@ -47,7 +50,19 @@ class MarcadoresFragment : Fragment() {
     ): FragmentMarcadoresBinding {
         return FragmentMarcadoresBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = this@MarcadoresFragment.viewLifecycleOwner
-            editTextToolbar = mainViewModel.propriedadesToolbar.toolbarEditText.text
+            val textToolbar = mainViewModel.propriedadesToolbar.toolbarEditText.text
+            editTextToolbar = textToolbar
+            acaoCriarMarcador = View.OnClickListener {
+                textToolbar.value?.run {
+                    salvaMarcadorEVaiParaFormulario(this)
+                }
+            }
+        }
+    }
+
+    private fun salvaMarcadorEVaiParaFormulario(text: String) {
+        viewModel.salva(Marcador(nome = text)) {
+            vaiParaFormulario(Marcador(nome = text, id = it))
         }
     }
 
@@ -61,7 +76,6 @@ class MarcadoresFragment : Fragment() {
         propriedadesToolbar.esconderAoMoverScroll(false)
         val toolbarEditText = propriedadesToolbar.toolbarEditText
         toolbarEditText.altera(getString(R.string.digite_o_nome_do_marcador))
-        toolbarEditText.limpaTexto()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

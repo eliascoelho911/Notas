@@ -11,6 +11,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import br.com.eliascoelho911.notas.R
 import br.com.eliascoelho911.notas.databinding.ActivityMainBinding
+import br.com.eliascoelho911.notas.ui.extensions.escondeTeclado
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -44,6 +45,8 @@ class MainActivity : AppCompatActivity() {
     private fun bottomAppBarSemNavigationIcon() {
         navController.addOnDestinationChangedListener { _, _, _ ->
             bottomappbar.navigationIcon = null
+            viewModel.propriedadesToolbar.toolbarEditText.limpaTexto()
+            escondeTeclado()
         }
     }
 

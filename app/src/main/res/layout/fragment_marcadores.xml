@@ -7,6 +7,10 @@
             name="editTextToolbar"
             type="androidx.lifecycle.LiveData&lt;String>" />
 
+        <variable
+            name="acaoCriarMarcador"
+            type="View.OnClickListener" />
+
         <import type="android.view.View" />
     </data>
 
@@ -22,6 +26,10 @@
             changeVisibilityWithFade="@{editTextToolbar.length() != 0}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="@{acaoCriarMarcador}"
             android:background="@color/background_tela"
             android:foreground="?android:selectableItemBackground">
 

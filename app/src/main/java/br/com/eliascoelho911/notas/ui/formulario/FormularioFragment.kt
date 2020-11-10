@@ -1,12 +1,10 @@
 package br.com.eliascoelho911.notas.ui.formulario
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -53,7 +51,6 @@ open class FormularioFragment : Fragment() {
 
     private fun salvaNotaEFechaFormulario() {
         salvaNotaSeAlgumCampoEstiverPreenchido(viewModel)
-        escondeTeclado()
         navController.popBackStack()
     }
 
@@ -100,12 +97,6 @@ open class FormularioFragment : Fragment() {
         if (algumCampoEstiverPreenchido()) {
             salvaNota(criaNota(), viewModel)
         }
-    }
-
-    private fun escondeTeclado() {
-        val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(fragment_formulario_titulo.windowToken, 0)
-        imm.hideSoftInputFromWindow(fragment_formulario_descricao_texto.windowToken, 0)
     }
 
     open fun algumCampoEstiverPreenchido(): Boolean {

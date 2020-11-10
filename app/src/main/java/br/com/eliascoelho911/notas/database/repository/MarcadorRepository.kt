@@ -15,4 +15,10 @@ class MarcadorRepository {
             dao.todos()
         }
     }
+
+    suspend fun salva(marcador: Marcador): Long {
+        return withContext(IO) {
+            dao.salva(marcador)
+        }
+    }
 }
