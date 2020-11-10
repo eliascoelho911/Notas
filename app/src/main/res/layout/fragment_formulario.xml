@@ -114,6 +114,7 @@
                     android:onClick="@{aoClicarNoBotaoAdicionar}"
                     android:contentDescription="@string/adicionar"
                     android:src="@drawable/ic_add_box"
+                    android:foreground="?android:selectableItemBackground"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -130,6 +131,7 @@
                         android:id="@+id/fragment_formulario_menu_desfazer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:foreground="?android:selectableItemBackground"
                         android:padding="@dimen/margin_fragment_formulario_menu"
                         android:contentDescription="@string/desfazer"
                         android:src="@drawable/ic_undo" />
@@ -138,6 +140,7 @@
                         android:id="@+id/fragment_formulario_menu_refazer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:foreground="?android:selectableItemBackground"
                         android:padding="@dimen/margin_fragment_formulario_menu"
                         android:contentDescription="@string/refazer"
                         android:src="@drawable/ic_redo" />
@@ -151,6 +154,7 @@
                     android:padding="@dimen/margin_fragment_formulario_menu"
                     android:contentDescription="@string/mais_opcoes"
                     android:src="@drawable/ic_more_vert"
+                    android:foreground="?android:selectableItemBackground"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
