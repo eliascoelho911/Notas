@@ -22,12 +22,17 @@ class MarcadoresFragment : Fragment() {
     private val mainViewModel: MainViewModel by sharedViewModel()
     private val args: MarcadoresFragmentArgs by navArgs()
     private val adapter by lazy {
-        MarcadoresAdapter { marcadorSelecionado ->
-            vaiParaFormulario(marcadorSelecionado)
+        val marcadorAtual = args.nota.marcador
+        MarcadoresAdapter(marcadorAtual) { marcadorSelecionado ->
+            val marcadorSalvo = if (marcadorAtual?.id == marcadorSelecionado.id)
+                null
+            else
+                marcadorSelecionado
+            vaiParaFormulario(marcadorSalvo)
         }
     }
 
-    private fun vaiParaFormulario(marcadorSelecionado: Marcador) {
+    private fun vaiParaFormulario(marcadorSelecionado: Marcador?) {
         val notaCompleta =
             criaNovaNotaCompletaComOMarcadorSelecionado(marcadorSelecionado)
         val actionNavMarcadoresToNavFormulario =
@@ -106,7 +111,7 @@ class MarcadoresFragment : Fragment() {
         }
     }
 
-    private fun criaNovaNotaCompletaComOMarcadorSelecionado(marcador: Marcador): NotaCompleta {
+    private fun criaNovaNotaCompletaComOMarcadorSelecionado(marcador: Marcador?): NotaCompleta {
         return NotaCompleta(args.nota.nota, marcador)
     }
 }

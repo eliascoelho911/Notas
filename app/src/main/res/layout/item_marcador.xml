@@ -10,6 +10,10 @@
         <variable
             name="onClick"
             type="android.view.View.OnClickListener" />
+
+        <variable
+            name="isSelected"
+            type="Boolean" />
     </data>
 
     <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -57,9 +61,11 @@
                 android:layout_marginEnd="@dimen/margin_item_marcador"
                 android:contentDescription="@string/confirmar"
                 android:src="@drawable/ic_check"
+                android:tint="@{isSelected ? @color/colorAccent : @android:color/white}"
                 app:layout_constraintBottom_toBottomOf="@id/item_marcador_icone"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/item_marcador_icone" />
+                app:layout_constraintTop_toTopOf="@id/item_marcador_icone"
+                tools:ignore="UseAppTint" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </layout>

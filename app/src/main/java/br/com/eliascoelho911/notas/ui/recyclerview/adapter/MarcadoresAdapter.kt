@@ -12,6 +12,7 @@ import br.com.eliascoelho911.notas.ui.recyclerview.adapter.MarcadoresAdapter.Mar
 import org.koin.java.KoinJavaComponent.inject
 
 class MarcadoresAdapter(
+    val marcadorSelecionado: Marcador?,
     var onClick: (Marcador) -> Unit = {},
 ) : ListAdapter<Marcador, MarcadorViewHolder>(DiffUtil()) {
     private val context by inject(Context::class.java)
@@ -47,6 +48,7 @@ class MarcadoresAdapter(
         fun vincula(marcador: Marcador) {
             binding.marcador = marcador
             binding.onClick = View.OnClickListener { onClick(marcador) }
+            binding.isSelected = marcadorSelecionado?.run { marcador.id == id } ?: false
         }
     }
 
